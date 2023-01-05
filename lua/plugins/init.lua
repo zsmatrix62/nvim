@@ -1,11 +1,11 @@
 local M = {}
 
+local packer = require("packer")
 local ensure_packer = function()
 	local fn = vim.fn
-	local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
-		vim.cmd [[packadd packer.nvim]]
+		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
 		return true
 	end
 	return false
@@ -41,7 +41,7 @@ local function packer_startup(use)
 		require("plugins.utils"),
 		require("plugins.neovide"),
 	}
-	use 'wbthomason/packer.nvim'
+	use("wbthomason/packer.nvim")
 	use({ "L3MON4D3/LuaSnip", requires = "rafamadriz/friendly-snippets" })
 
 	for _, m in ipairs(configItems) do
@@ -56,17 +56,22 @@ local function packer_startup(use)
 			m.setup()
 		end
 	end
-
 end
 
 function M.setup()
+	-- ensure packer been installed
 	local packer_bootstrap = ensure_packer()
+	-- init packer configuration
 	init_packer()
-	pcall(require("packer").startup, packer_startup)
-	-- require("packer").startup(packer_startup)
+	-- startup packer
+	pcall(packer.startup, packer_startup)
+	-- compile packer
+	pcall(packer.compile)
+	-- reload compiled
 	require("packer_compiled")
 	if packer_bootstrap then
-		require('packer').sync()
+		-- sync plugins if pakcer is refresh installed
+		require("packer").sync()
 	end
 end
 
