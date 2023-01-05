@@ -16,7 +16,7 @@ function M.SetupModules(modules)
 	end
 	for _, m in ipairs(modules) do
 		if m.setup ~= nil then
-			m.setup()
+			pcall(m.setup)
 		end
 	end
 end
@@ -28,7 +28,7 @@ function M.RequireModules(modules, use)
 
 	for _, m in ipairs(modules) do
 		if m.require ~= nil then
-			m.require(use)
+			pcall(m.require, use)
 		end
 	end
 end

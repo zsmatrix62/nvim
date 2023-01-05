@@ -1,11 +1,12 @@
 local M = {}
 
-local packer = require("packer")
+
 local ensure_packer = function()
 	local fn = vim.fn
 	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 	if fn.empty(fn.glob(install_path)) > 0 then
 		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+		vim.cmd [[packadd packer.nvim]]
 		return true
 	end
 	return false
@@ -29,7 +30,6 @@ end
 local function packer_startup(use)
 	local configItems = {
 		require("plugins.lsp"),
-		-- require("plugins.dap"),
 		require("plugins.extensions.bufferline"),
 		require("plugins.ui"),
 		require("plugins.languages"),
@@ -53,7 +53,7 @@ local function packer_startup(use)
 	-- plugins configurations
 	for _, m in ipairs(configItems) do
 		if m.setup ~= nil then
-			m.setup()
+			pcall(m.setup)
 		end
 	end
 end
@@ -61,6 +61,7 @@ end
 function M.setup()
 	-- ensure packer been installed
 	local packer_bootstrap = ensure_packer()
+	local packer = require("packer")
 	-- init packer configuration
 	init_packer()
 	-- startup packer
@@ -71,7 +72,7 @@ function M.setup()
 	require("packer_compiled")
 	if packer_bootstrap then
 		-- sync plugins if pakcer is refresh installed
-		require("packer").sync()
+		packer.sync()
 	end
 end
 

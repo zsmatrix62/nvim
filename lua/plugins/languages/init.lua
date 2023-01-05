@@ -1,6 +1,5 @@
 local ms = {
 	require("plugins.languages.go"),
-	-- require "plugins.languages.swfit",
 	require("plugins.languages.rust"),
 }
 

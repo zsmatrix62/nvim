@@ -7,7 +7,6 @@ local modules = {
 	require("plugins.ui.cursorline"),
 	require("plugins.ui.smoothcursor"),
 	require("plugins.ui.windowpicker"),
-	require("plugins.ui.mini_animate"),
 }
 
 return require("utils.pluginConfig").NewConfig({

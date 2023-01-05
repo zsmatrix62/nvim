@@ -1,6 +1,4 @@
 local ms = {
-	require("plugins.tools.obsidian"),
-	-- require("plugins.tools.fterm"),
 	require("plugins.tools.markdown"),
 }
 
