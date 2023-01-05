@@ -78,7 +78,6 @@ function M.setup()
 		vim.lsp.protocol.make_client_capabilities(),
 		{ snippetSupport = true }
 	)
-	-- capabilities.offsetEncoding = "utf-8"
 
 	local setup_options = {
 		capabilities = capabilities,

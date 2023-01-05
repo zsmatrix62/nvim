@@ -12,7 +12,7 @@ end
 
 function M.SetupModules(modules)
 	if modules == nil then
-return
+		return
 	end
 	for _, m in ipairs(modules) do
 		if m.setup ~= nil then
@@ -23,8 +23,9 @@ end
 
 function M.RequireModules(modules, use)
 	if modules == nil then
-return
+		return
 	end
+
 	for _, m in ipairs(modules) do
 		if m.require ~= nil then
 			m.require(use)

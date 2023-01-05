@@ -6,11 +6,11 @@ local ms = {
 	require("plugins.editing.surround"),
 	require("plugins.editing.history"),
 	require("plugins.editing.outline"),
-	require("plugins.editing.vimcaps"),
 	require("plugins.editing.autopair"),
 	require("plugins.editing.colorizer"),
 	require("plugins.editing.comment"),
 }
+
 return require("utils.pluginConfig").NewConfig({
 	require = function(use)
 		use({

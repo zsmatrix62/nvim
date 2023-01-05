@@ -11,7 +11,6 @@ local ensure_packer = function()
 	return false
 end
 
-
 local function init_packer()
 	local conf = {
 		compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
@@ -54,7 +53,7 @@ local function packer_startup(use)
 	-- plugins configurations
 	for _, m in ipairs(configItems) do
 		if m.setup ~= nil then
-			pcall(m.setup)
+			m.setup()
 		end
 	end
 
@@ -64,6 +63,8 @@ function M.setup()
 	local packer_bootstrap = ensure_packer()
 	init_packer()
 	pcall(require("packer").startup, packer_startup)
+	-- require("packer").startup(packer_startup)
+	require("packer_compiled")
 	if packer_bootstrap then
 		require('packer').sync()
 	end
