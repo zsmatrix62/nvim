@@ -5,11 +5,16 @@ return require("utils.pluginConfig").NewConfig({
 			"nvim-telescope/telescope.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
 			config = function()
+				local close_action = require("telescope.actions").close
+				local mappings = {
+					i = {
+						["<esc>"] = close_action,
+					},
+					n = { ["q"] = close_action, ["<esc>"] = close_action },
+				}
 				require("telescope").setup({
 					defaults = {
-						mappings = {
-							i = { ["<C-u>"] = false },
-						},
+						mappings = mappings,
 						layout_config = {
 							horizontal = { width = 0.9 },
 						},
@@ -17,7 +22,9 @@ return require("utils.pluginConfig").NewConfig({
 					pickers = {
 						find_files = { theme = "dropdown" },
 						live_grep = { theme = "dropdown" },
-						git_files = { theme = "dropdown" },
+						git_files = {
+							theme = "dropdown",
+						},
 						diagnostics = { theme = "dropdown" },
 					},
 					extensions = {
