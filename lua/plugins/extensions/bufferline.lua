@@ -7,7 +7,7 @@ end
 function M.setup()
 	require("bufferline").setup({
 		options = {
-			mode = "buffers",
+			mode = "tabs",
 			numbers = "none",
 			close_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
 			right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"

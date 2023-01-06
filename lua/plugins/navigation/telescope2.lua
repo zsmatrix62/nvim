@@ -33,7 +33,6 @@ return require("utils.pluginConfig").NewConfig({
 				vim.api.nvim_set_keymap("n", "<leader>2", ":Telescope live_grep<cr>", { silent = true })
 				vim.api.nvim_set_keymap("n", "<leader>3", ":Telescope git_files<cr>", { silent = true })
 				vim.api.nvim_set_keymap("n", "<leader>4", ":Telescope find_files<cr>", { silent = true })
-				-- vim.api.nvim_set_keymap("n", "<leader>d", ":Telescope diagnostics bufnr=0<cr>", { silent = true })
 				vim.api.nvim_set_keymap("n", "<leader>d", ":Telescope diagnostics<cr>", { silent = true })
 				vim.api.nvim_set_keymap("n", "<leader>t", ":TodoTelescope<cr>", { noremap = false, silent = true })
 			end,

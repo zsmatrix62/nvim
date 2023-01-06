@@ -13,28 +13,28 @@ return {
 				vim.api.nvim_set_keymap(
 					"",
 					"<space>e",
-					":Neotree source=filesystem reveal=true position=float toggle=true<cr>",
+					":Neotree source=filesystem reveal=true position=left toggle=true<cr>",
 					{ silent = true }
 				)
 
 				vim.api.nvim_set_keymap(
 					"",
 					"<space>r",
-					":Neotree source=buffers reveal=true position=float toggle=true<cr>",
+					":Neotree source=buffers reveal=true position=left toggle=true<cr>",
 					{ silent = true }
 				)
 
 				vim.api.nvim_set_keymap(
 					"",
 					"<space>g",
-					":Neotree source=git_status reveal=true position=float toggle=true<cr>",
+					":Neotree source=git_status reveal=true position=left toggle=true<cr>",
 					{ silent = true }
 				)
 
 				require("neo-tree").setup({
 					close_if_last_window = false,
 					window = {
-						position = "float",
+						position = "left",
 						width = 40,
 						mapping_options = {
 							noremap = true,
@@ -142,7 +142,7 @@ return {
 					},
 					git_status = {
 						window = {
-							position = "float",
+							position = "left",
 							mappings = {
 								["A"] = "git_add_all",
 								["gu"] = "git_unstage_file",
