@@ -23,11 +23,10 @@ return {
 						"gitignore",
 						"gomod",
 						"markdown",
-					},
-					sync_install = false,
-					ignore_install = {
 						"html",
 					},
+					sync_install = false,
+					ignore_install = {},
 					highlight = {
 						enable = true,
 						disable = {},
