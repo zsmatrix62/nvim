@@ -13,28 +13,28 @@ return {
 				vim.api.nvim_set_keymap(
 					"",
 					"<space>e",
-					":Neotree source=filesystem reveal=true position=left toggle=true<cr>",
+					":Neotree source=filesystem reveal=true position=right toggle=true<cr>",
 					{ silent = true }
 				)
 
 				vim.api.nvim_set_keymap(
 					"",
 					"<space>r",
-					":Neotree source=buffers reveal=true position=left toggle=true<cr>",
+					":Neotree source=buffers reveal=true position=right toggle=true<cr>",
 					{ silent = true }
 				)
 
 				vim.api.nvim_set_keymap(
 					"",
 					"<space>g",
-					":Neotree source=git_status reveal=true position=left toggle=true<cr>",
+					":Neotree source=git_status reveal=true position=right toggle=true<cr>",
 					{ silent = true }
 				)
 
 				require("neo-tree").setup({
 					close_if_last_window = false,
 					window = {
-						position = "left",
+						position = "right",
 						width = 40,
 						mapping_options = {
 							noremap = true,
@@ -110,7 +110,7 @@ return {
 						-- in whatever position is specified in window.position
 						-- "open_current",  -- netrw disabled, opening a directory opens within the
 						-- window like netrw would, regardless of window.position
-						-- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
+						-- "disabled",    -- netrw right alone, neo-tree does not handle opening dirs
 						use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
 						-- instead of relying on nvim autocmd events.
 						window = {
@@ -142,7 +142,7 @@ return {
 					},
 					git_status = {
 						window = {
-							position = "left",
+							position = "right",
 							mappings = {
 								["A"] = "git_add_all",
 								["gu"] = "git_unstage_file",

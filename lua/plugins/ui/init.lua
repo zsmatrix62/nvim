@@ -7,12 +7,17 @@ local modules = {
 	require("plugins.ui.cursorline"),
 	require("plugins.ui.smoothcursor"),
 	require("plugins.ui.windowpicker"),
-	require("plugins.ui.minimap"),
 }
 
 return require("utils.pluginConfig").NewConfig({
 	require = function(use)
-		use("mhinz/vim-startify")
+		use({
+			"goolord/alpha-nvim",
+			requires = { "nvim-tree/nvim-web-devicons" },
+			config = function()
+				require("alpha").setup(require("alpha.themes.startify").config)
+			end,
+		})
 		use("nvim-tree/nvim-web-devicons")
 
 		require("utils.pluginConfig").RequireModules(modules, use)

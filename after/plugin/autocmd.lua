@@ -60,30 +60,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	group = grp_auto_save,
 })
 
-vim.api.nvim_create_autocmd("BufEnter,FileType", {
-	pattern = { "*" },
-	callback = function()
-		local exclude_ft = {
-			"qf",
-			"NvimTree",
-			"toggleterm",
-			"TelescopePrompt",
-			"alpha",
-			"netrw",
-			"startify",
-		}
-
-		local map = require("mini.map")
-		if vim.tbl_contains(exclude_ft, vim.o.filetype) then
-			vim.b.minimap_disable = true
-			map.close()
-		elseif vim.o.buftype == "" then
-			vim.b.minimap_disable = false
-			map.open()
-		end
-	end,
-})
-
 -- auto add git on saved file
 -- vim.api.nvim_create_autocmd("BufWritePost", {
 -- 	pattern = { "*" },
