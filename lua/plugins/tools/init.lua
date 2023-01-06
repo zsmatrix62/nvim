@@ -1,5 +1,6 @@
 local ms = {
 	require("plugins.tools.markdown"),
+	require("plugins.tools.wakatime"),
 }
 
 return require("utils.pluginConfig").NewConfig({

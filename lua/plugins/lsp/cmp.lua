@@ -101,7 +101,12 @@ function M.setup()
 			["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 			["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 			["<C-e>"] = cmp.mapping.abort(),
-			["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+			-- ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+			["<CR>"] = cmp.mapping.confirm({
+				-- this is the important line
+				behavior = cmp.ConfirmBehavior.Replace,
+				select = false,
+			}),
 			["<Tab>"] = select_next_item,
 			["<C-n>"] = select_next_item,
 			["<S-Tab>"] = select_pre_item,
@@ -223,10 +228,10 @@ function M.setup()
 			}),
 		},
 		sources = {
+			{ name = "luasnip", priority = 1000 },
 			{ name = "calc", priority = 900 },
 			{ name = "nvim_lsp", priority = 900 },
 			{ name = "path", priority = 900 },
-			{ name = "luasnip", priority = 700 },
 			{ name = "buffer", priority = 600 },
 			{ name = "crates", priority = 100 },
 			{ name = "treesitter", priority = 100 },

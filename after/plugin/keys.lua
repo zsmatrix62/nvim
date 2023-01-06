@@ -23,7 +23,7 @@ keymap("n", winPrefix .. "J", "<c-w>J", keymapopts)
 keymap("n", winPrefix .. "K", "<c-w>K", keymapopts)
 keymap("n", winPrefix .. "L", "<c-w>L", keymapopts)
 
-keymap("n", "<tab>", "<c-w>w", keymapopts)
+-- keymap("n", "<tab>", "<c-w>w", keymapopts)
 keymap("n", winPrefix .. "h", "<c-w>h", keymapopts)
 keymap("n", winPrefix .. "j", "<c-w>j", keymapopts)
 keymap("n", winPrefix .. "k", "<c-w>k", keymapopts)

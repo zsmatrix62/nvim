@@ -47,7 +47,7 @@ return {
 							},
 							["o"] = "open",
 							["l"] = "open",
-							["<cr>"] = "open",
+							-- ["<cr>"] = "open",
 							-- ["s"] = "open_split",
 							-- ["v"] = "open_vsplit",
 							["s"] = "split_with_window_picker",

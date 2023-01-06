@@ -9,6 +9,8 @@ local ms = {
 	require("plugins.editing.autopair"),
 	require("plugins.editing.colorizer"),
 	require("plugins.editing.comment"),
+	require("plugins.editing.repeat"),
+	require("plugins.editing.ts-auto-tag"),
 }
 
 return require("utils.pluginConfig").NewConfig({
