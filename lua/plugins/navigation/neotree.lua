@@ -13,28 +13,38 @@ return {
 				vim.api.nvim_set_keymap(
 					"",
 					"<space>e",
-					":Neotree source=filesystem reveal=true position=right toggle=true<cr>",
+					":Neotree source=filesystem reveal=true position=float toggle=true<cr>",
 					{ silent = true }
 				)
 
 				vim.api.nvim_set_keymap(
 					"",
 					"<space>r",
-					":Neotree source=buffers reveal=true position=right toggle=true<cr>",
+					":Neotree source=buffers reveal=true position=float toggle=true<cr>",
 					{ silent = true }
 				)
 
 				vim.api.nvim_set_keymap(
 					"",
 					"<space>g",
-					":Neotree source=git_status reveal=true position=right toggle=true<cr>",
+					":Neotree source=git_status reveal=true position=float toggle=true<cr>",
 					{ silent = true }
 				)
 
 				require("neo-tree").setup({
+					event_handlers = {
+
+						{
+							event = "file_opened",
+							handler = function(_)
+								--auto close
+								require("neo-tree").close_all()
+							end,
+						},
+					},
 					close_if_last_window = false,
 					window = {
-						position = "right",
+						position = "float",
 						width = 40,
 						mapping_options = {
 							noremap = true,
@@ -82,6 +92,7 @@ return {
 							["?"] = "show_help",
 						},
 					},
+					commands = {},
 					nesting_rules = {
 						["css"] = { "css.map" },
 						["js"] = { "js.map" },
@@ -94,6 +105,7 @@ return {
 							hide_hidden = true, -- only works on Windows for hidden files/directories
 							hide_by_name = {
 								"node_modules",
+								".cargo",
 							},
 							hide_by_pattern = { -- uses glob style patterns
 								--"*.meta"
@@ -110,7 +122,7 @@ return {
 						-- in whatever position is specified in window.position
 						-- "open_current",  -- netrw disabled, opening a directory opens within the
 						-- window like netrw would, regardless of window.position
-						-- "disabled",    -- netrw right alone, neo-tree does not handle opening dirs
+						-- "disabled",    -- netrw float alone, neo-tree does not handle opening dirs
 						use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
 						-- instead of relying on nvim autocmd events.
 						window = {
@@ -142,7 +154,7 @@ return {
 					},
 					git_status = {
 						window = {
-							position = "right",
+							position = "float",
 							mappings = {
 								["A"] = "git_add_all",
 								["gu"] = "git_unstage_file",

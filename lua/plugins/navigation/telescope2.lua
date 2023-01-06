@@ -22,7 +22,7 @@ return require("utils.pluginConfig").NewConfig({
 					},
 					extensions = {
 						workspaces = {
-							keep_insert = true,
+							keep_insert = false,
 						},
 						extensions = {},
 					},
