@@ -1,21 +1,9 @@
 return {
 	require = function(use)
 		use("sainnhe/everforest")
-		use("sainnhe/sonokai")
 		use("folke/tokyonight.nvim")
-		use({ "projekt0n/github-nvim-theme" })
 
 		use({
-			"arzg/vim-colors-xcode",
-			"arzg/vim-rust-syntax-ext",
-			"tpope/vim-markdown",
-			"cakebaker/scss-syntax.vim",
-			-- "arzg/vim-swift",
-			"HerringtonDarkholme/yats.vim",
-			"pangloss/vim-javascript",
-			"othree/html5.vim",
-			-- "fatih/vim-go",
-			"hail2u/vim-css3-syntax",
 			"LunarVim/lunar.nvim",
 		})
 		vim.opt.termguicolors = true
