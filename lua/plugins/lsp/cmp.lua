@@ -27,6 +27,25 @@ function M.require(use)
 	use("hrsh7th/cmp-calc")
 	use("hrsh7th/cmp-nvim-lsp")
 	use("amarakon/nvim-cmp-buffer-lines")
+	-- Copilot
+	-- use({
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	event = "VimEnter",
+	-- 	config = function()
+	-- 		vim.defer_fn(function()
+	-- 			require("copilot").setup()
+	-- 		end, 100)
+	-- 	end,
+	-- })
+	-- use({
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	after = { "copilot.lua" },
+	-- 	config = function()
+	-- 		require("copilot_cmp").setup({
+	-- 			method = "getCompletionsCycling",
+	-- 		})
+	-- 	end,
+	-- })
 	-- use({
 	-- 	"uga-rosa/cmp-dictionary",
 	-- 	config = function()
@@ -228,10 +247,10 @@ function M.setup()
 			}),
 		},
 		sources = {
-			{ name = "luasnip", priority = 1000 },
 			{ name = "calc", priority = 900 },
 			{ name = "nvim_lsp", priority = 900 },
 			{ name = "path", priority = 900 },
+			{ name = "luasnip", priority = 700 },
 			{ name = "buffer", priority = 600 },
 			{ name = "crates", priority = 100 },
 			{ name = "treesitter", priority = 100 },

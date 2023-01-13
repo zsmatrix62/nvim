@@ -6,6 +6,7 @@ local ms = {
 	require("plugins.lsp.keys"),
 	require("plugins.lsp.manson"),
 	require("plugins.lsp.ui"),
+	require("plugins.lsp.lsp_lines"),
 }
 
 function M.require(use)

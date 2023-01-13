@@ -59,50 +59,83 @@ return {
 			"glepnir/lspsaga.nvim",
 			branch = "main",
 			config = function()
-				---@diagnostic disable: undefined-global, redefined-local
-				require("lspsaga").init_lsp_saga({})
+				require("lspsaga").setup({
+					diagnostic = {
+						twice_into = true,
+						show_code_action = true,
+						show_source = true,
+						keys = {
+							exec_action = "o",
+							quit = "q",
+						},
+					},
+
+					ui = {
+						-- currently only round theme
+						theme = "round",
+						-- border type can be single,double,rounded,solid,shadow.
+						border = "rounded",
+						winblend = 0,
+						expand = "",
+						collapse = "",
+						preview = " ",
+						code_action = "💡",
+						diagnostic = "🐞",
+						incoming = " ",
+						outgoing = " ",
+						colors = {
+							--float window normal bakcground color
+							normal_bg = "#1d1536",
+							--title background color
+							title_bg = "#afd700",
+							red = "#e95678",
+							magenta = "#b33076",
+							orange = "#FF8700",
+							yellow = "#f7bb3b",
+							green = "#afd700",
+							cyan = "#36d0e0",
+							blue = "#61afef",
+							purple = "#CBA6F7",
+							white = "#d1d4cf",
+							black = "#1c1c19",
+						},
+						kind = {},
+					},
+				})
 
 				-- hover doc
 				-- local action = require("lspsaga.action")
 				vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
-				-- -- scroll down hover doc or scroll in definition preview
-				-- vim.keymap.set("n", "<C-f>", function()
-				-- 	action.smart_scroll_with_saga(1)
-				-- end, { silent = true })
-				-- -- scroll up hover doc
-				-- vim.keymap.set("n", "<C-b>", function()
-				-- 	action.smart_scroll_with_saga(-1)
-				-- end, { silent = true })
 				vim.keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
-
 				-- code action
-				local action = require("lspsaga.codeaction")
+				-- local action = require("lspsaga.codeaction")
 				vim.keymap.set("n", "<leader>q", "<cmd>Lspsaga code_action<CR>", { silent = true, noremap = true })
+				vim.keymap.set("n", "<space>q", "<cmd>Lspsaga code_action<CR>", { silent = true, noremap = true })
 				-- rename
 				vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<cr>", { silent = true, noremap = true })
 
 				-- preview definition
 				vim.keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<cr>", { silent = true, noremap = true })
 
+				local diagnostic = require("lspsaga.diagnostic")
 				-- jump diagnostic
-				vim.keymap.set("n", "[g", require("lspsaga.diagnostic").goto_prev, { silent = true, noremap = true })
-				vim.keymap.set("n", "]g", require("lspsaga.diagnostic").goto_next, { silent = true, noremap = true })
-
+				vim.keymap.set("n", "[g", diagnostic.goto_prev, { silent = true, noremap = true })
+				vim.keymap.set("n", "]g", diagnostic.goto_next, { silent = true, noremap = true })
+				vim.keymap.set("n", "ng", diagnostic.goto_prev, { silent = true, noremap = true })
+				vim.keymap.set("n", "mg", diagnostic.goto_next, { silent = true, noremap = true })
 				-- or jump to error
 				vim.keymap.set("n", "[e", function()
-					require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+					diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
 				end, { silent = true, noremap = true })
 				vim.keymap.set("n", "]e", function()
-					require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+					diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
 				end, { silent = true, noremap = true })
-			end,
-		})
-		use({
-			"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-			config = function()
-				-- Disable virtual_text since it's redundant due to lsp_lines.
-				vim.diagnostic.config({ virtual_text = false })
-				require("lsp_lines").setup()
+				vim.keymap.set("n", "ne", function()
+					diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
+				end, { silent = true, noremap = true })
+				vim.keymap.set("n", "me", function()
+					diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+				end, { silent = true, noremap = true })
 			end,
 		})
 	end,
