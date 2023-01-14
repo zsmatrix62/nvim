@@ -11,7 +11,7 @@ keymap("i", "jj", "<Esc>", keymapopts)
 keymap("i", "ji", "<Esc>A;<esc>", keymapopts)
 
 -- quick save
-keymap("n", "mm", ":wa<cr>", { silent = true, noremap = false })
+keymap("n", "mm", ":silent Neoformat | wa<cr>", { silent = true, noremap = false })
 
 local winPrefix = "nw"
 keymap("n", winPrefix .. "c", "<c-w>c", keymapopts)

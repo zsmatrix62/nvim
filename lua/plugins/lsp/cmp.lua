@@ -46,19 +46,19 @@ function M.require(use)
 	-- 		})
 	-- 	end,
 	-- })
-	-- use({
-	-- 	"uga-rosa/cmp-dictionary",
-	-- 	config = function()
-	-- 		require("cmp_dictionary").setup({
-	-- 			dic = {
-	-- 				["*"] = "~/.config/nvim/dicts/en.dict",
-	-- 				spelllang = {
-	-- 					en = "~/.config/nvim/dicts/en.dict",
-	-- 				},
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- })
+	use({
+		"uga-rosa/cmp-dictionary",
+		config = function()
+			require("cmp_dictionary").setup({
+				dic = {
+					["*"] = "~/.config/nvim/dicts/en.dict",
+					spelllang = {
+						en = "~/.config/nvim/dicts/en.dict",
+					},
+				},
+			})
+		end,
+	})
 end
 
 function M.setup()
@@ -254,11 +254,11 @@ function M.setup()
 			{ name = "buffer", priority = 600 },
 			{ name = "crates", priority = 100 },
 			{ name = "treesitter", priority = 100 },
-			-- {
-			-- 	name = "dictionary",
-			-- 	keyword_length = 2,
-			-- 	priority = 1,
-			-- },
+			{
+				name = "dictionary",
+				keyword_length = 2,
+				priority = 1,
+			},
 		},
 	})
 end

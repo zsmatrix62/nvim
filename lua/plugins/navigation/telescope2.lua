@@ -1,16 +1,21 @@
--- local actions = require("telescope.actions")
 return require("utils.pluginConfig").NewConfig({
 	require = function(use)
 		use({
 			"nvim-telescope/telescope.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
 			config = function()
-				local close_action = require("telescope.actions").close
+				local actions = require("telescope.actions")
+				local close_action = actions.close
 				local mappings = {
 					i = {
 						["<esc>"] = close_action,
+						["<CR>"] = actions.select_default + actions.center,
 					},
-					n = { ["q"] = close_action, ["<esc>"] = close_action },
+					n = {
+						["q"] = close_action,
+						["<esc>"] = close_action,
+						["<CR>"] = actions.select_default + actions.center,
+					},
 				}
 				require("telescope").setup({
 					defaults = {

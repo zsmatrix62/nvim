@@ -14,7 +14,7 @@ end
 local function init_packer()
 	local conf = {
 		compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
-		max_jobs = 20,
+		max_jobs = 64,
 		autoremove = true,
 		display = {
 			open_fn = function()

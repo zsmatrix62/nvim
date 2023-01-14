@@ -67,6 +67,7 @@ return {
 						keys = {
 							exec_action = "o",
 							quit = "q",
+							go_action = "g",
 						},
 					},
 

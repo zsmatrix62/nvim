@@ -1,5 +1,5 @@
 local M = {
-	ENSURE_SERVERS = {
+	ENSURE_INSTALLS = {
 		"rust_analyzer",
 		"pyright",
 		"tsserver",
@@ -7,17 +7,30 @@ local M = {
 		"cmake",
 		"cssmodules_ls",
 		"dockerls",
-		-- "marksman",
+		"marksman",
 		"sqls",
-		-- "clangd",
+		"clangd",
 		"cssls",
-		-- "taplo",
+		"taplo",
 		"angularls",
 		"sumneko_lua",
 		"jsonls",
 		"bufls",
+		"html",
 	},
 }
+
+-- -- formatters
+-- "clang-format",
+-- "prettier",
+-- "sql-formatter",
+-- "go-fumpt",
+-- "gofmt",
+-- "goimport",
+-- "rustfmt",
+-- "stylua",
+-- "buf",
+-- "autopep8",
 
 function M.setup() -- auto install configurations
 	require("mason").setup({
@@ -32,7 +45,7 @@ function M.setup() -- auto install configurations
 
 	require("mason-lspconfig").setup({
 		automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-		ensure_installed = M.ENSURE_SERVERS,
+		ensure_installed = M.ENSURE_INSTALLS,
 	})
 end
 

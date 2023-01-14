@@ -11,13 +11,7 @@ local modules = {
 
 return require("utils.pluginConfig").NewConfig({
 	require = function(use)
-		use({
-			"goolord/alpha-nvim",
-			requires = { "nvim-tree/nvim-web-devicons" },
-			config = function()
-				require("alpha").setup(require("alpha.themes.startify").config)
-			end,
-		})
+		use("mhinz/vim-startify")
 		use("nvim-tree/nvim-web-devicons")
 
 		require("utils.pluginConfig").RequireModules(modules, use)

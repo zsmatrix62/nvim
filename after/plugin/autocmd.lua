@@ -1,71 +1,24 @@
-local language_patterns = { "*.rs", "*.py", "*.sql" }
-local language_patterns_neo = { "*.lua", "*.c", "*.cpp", "*.cxx", "*.cc" }
-local language_patterns_go = { "*.go" }
-local language_patterns_proto = { "*.proto" }
-local language_patterns_prettier =
-	{ "*.html", "*.css", "*.scss", "*.md", "*.tsx", "*.jsx", "*.yaml", "*.json", "*.ts", "*.js" }
-
 -- -- Group auto save buffer
--- local grp_insert_leave = vim.api.nvim_create_augroup("insert_leave", { clear = true })
-
--- -- auto save on insert leave
--- vim.api.nvim_create_autocmd("InsertLeave", {
--- 	pattern = language_patterns,
--- 	command = "wa!",
--- 	group = grp_insert_leave,
--- })
-vim.api.nvim_create_autocmd("BufWrite", {
-	pattern = "*",
-	command = "set ff=unix",
-})
 
 local grp_auto_save = vim.api.nvim_create_augroup("autosave", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = language_patterns,
-	command = ":lua vim.lsp.buf.format()",
-	group = grp_auto_save,
-})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = language_patterns_neo,
+	pattern = "*",
 	command = ":Neoformat",
 	group = grp_auto_save,
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = language_patterns_go,
-	command = [[:lua require("go.format").goimport()]],
-	group = grp_auto_save,
+local grp_insert_leave = vim.api.nvim_create_augroup("insert_leave", { clear = true })
+-- -- auto save on insert leave
+vim.api.nvim_create_autocmd("InsertLeave", {
+	pattern = "*",
+	command = ":silent Neoformat | wa!",
+	group = grp_insert_leave,
 })
 
--- format protobuf file: install buf binary via brew
-vim.api.nvim_create_autocmd("BufWritePost", {
-	pattern = language_patterns_proto,
-	command = [[:silent! !buf format -w %]],
-	group = grp_auto_save,
+vim.api.nvim_create_autocmd("BufWrite", {
+	pattern = "*",
+	command = "set ff=unix",
 })
-
---- Use external prettier command to format current buffer, and restore default cursor location.
-local function prettier_fmt()
-	vim.api.nvim_command(":mark z")
-	vim.api.nvim_command(":silent %!prettier --stdin-filepath %")
-	vim.api.nvim_command(":'z")
-	vim.api.nvim_command(":delm z")
-end
-
-vim.api.nvim_create_user_command("PrettierFmt", prettier_fmt, {})
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = language_patterns_prettier,
-	command = ":silent Neoformat prettier",
-	group = grp_auto_save,
-})
-
--- auto add git on saved file
--- vim.api.nvim_create_autocmd("BufWritePost", {
--- 	pattern = { "*" },
--- 	command = ":silent! Git add %",
--- 	group = grp_auto_save,
--- })
 
 -- group save folding
 local grp_remember_fold = vim.api.nvim_create_augroup("remember foldings", { clear = true })

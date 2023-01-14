@@ -6,7 +6,7 @@ local ms = {
 	require("plugins.lsp.keys"),
 	require("plugins.lsp.manson"),
 	require("plugins.lsp.ui"),
-	require("plugins.lsp.lsp_lines"),
+	-- require("plugins.lsp.lsp_lines"),
 }
 
 function M.require(use)
@@ -85,7 +85,7 @@ function M.setup()
 		settings = {},
 	}
 
-	for _, lsp in ipairs(manson.ENSURE_SERVERS) do
+	for _, lsp in ipairs(manson.ensure_installs) do
 		local ok, optionModule = pcall(require, "plugins.lsp.lang-setup-options." .. lsp)
 		if ok then
 			setup_options = optionModule.config(setup_options)
