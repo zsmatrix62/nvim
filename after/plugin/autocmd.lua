@@ -8,12 +8,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 local grp_insert_leave = vim.api.nvim_create_augroup("insert_leave", { clear = true })
--- -- auto save on insert leave
-vim.api.nvim_create_autocmd("InsertLeave", {
-	pattern = "*",
-	command = ":silent Neoformat | wa!",
-	group = grp_insert_leave,
-})
 
 vim.api.nvim_create_autocmd("BufWrite", {
 	pattern = "*",

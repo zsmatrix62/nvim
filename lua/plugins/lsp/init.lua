@@ -85,7 +85,7 @@ function M.setup()
 		settings = {},
 	}
 
-	for _, lsp in ipairs(manson.ensure_installs) do
+	for _, lsp in ipairs(manson.ENSURE_INSTALLS) do
 		local ok, optionModule = pcall(require, "plugins.lsp.lang-setup-options." .. lsp)
 		if ok then
 			setup_options = optionModule.config(setup_options)
