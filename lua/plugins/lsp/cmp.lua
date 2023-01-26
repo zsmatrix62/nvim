@@ -1,14 +1,58 @@
 local M = {}
 
 function M.require(use)
+	-- cmp sources - lsp
 	use({
-		"hrsh7th/nvim-cmp",
+		"hrsh7th/cmp-nvim-lsp",
 		requires = {
+			"hrsh7th/nvim-cmp",
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
 			"onsails/lspkind-nvim",
 			"neovim/nvim-lspconfig",
 		},
+		config = M.config_nvim_cmp_lsp,
+	})
+	-- other cmp sources
+	use({ "ray-x/cmp-treesitter", after = "cmp-nvim-lsp" })
+	use({
+		"saecki/crates.nvim",
+		after = "cmp-nvim-lsp",
+		tag = "v0.2.1",
+		requires = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("crates").setup()
+		end,
+	})
+	use({
+		"saadparwaiz1/cmp_luasnip",
+		after = "cmp-nvim-lsp",
+		config = function()
+			require("luasnip.loaders.from_vscode").lazy_load({
+				paths = {
+					vim.fn.stdpath("config") .. "/snippets/friendly-snippets",
+					vim.fn.stdpath("config") .. "/snippets/angular",
+				},
+			})
+		end,
+	})
+	use({ "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" })
+	use({ "hrsh7th/cmp-path", after = "cmp-nvim-lsp" })
+	use({ "hrsh7th/cmp-calc", after = "cmp-nvim-lsp" })
+	use({ "amarakon/nvim-cmp-buffer-lines", after = "cmp-nvim-lsp" })
+	use({
+		"uga-rosa/cmp-dictionary",
+		after = "cmp-nvim-lsp",
+		config = function()
+			require("cmp_dictionary").setup({
+				dic = {
+					["*"] = "~/.config/nvim/dicts/en.dict",
+					spelllang = {
+						en = "~/.config/nvim/dicts/en.dict",
+					},
+				},
+			})
+		end,
 	})
 
 	-- lsp interface and support
@@ -52,53 +96,6 @@ function M.require(use)
 			}
 
 			require("lsp_signature").setup(cfg)
-		end,
-	})
-
-	-- cmp sources
-	use({
-		"hrsh7th/cmp-nvim-lsp",
-		after = { "nvim-cmp" },
-		config = M.config_nvim_cmp_lsp,
-	})
-	use({ "ray-x/cmp-treesitter", after = "nvim-cmp" })
-	use({
-		"saecki/crates.nvim",
-		after = "nvim-cmp",
-		tag = "v0.2.1",
-		requires = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("crates").setup()
-		end,
-	})
-	use({
-		"saadparwaiz1/cmp_luasnip",
-		after = "nvim-cmp",
-		config = function()
-			require("luasnip.loaders.from_vscode").lazy_load({
-				paths = {
-					vim.fn.stdpath("config") .. "/snippets/friendly-snippets",
-					vim.fn.stdpath("config") .. "/snippets/angular",
-				},
-			})
-		end,
-	})
-	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
-	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
-	use({ "hrsh7th/cmp-calc", after = "nvim-cmp" })
-	use({ "amarakon/nvim-cmp-buffer-lines", after = "nvim-cmp" })
-	use({
-		"uga-rosa/cmp-dictionary",
-		after = "nvim-cmp",
-		config = function()
-			require("cmp_dictionary").setup({
-				dic = {
-					["*"] = "~/.config/nvim/dicts/en.dict",
-					spelllang = {
-						en = "~/.config/nvim/dicts/en.dict",
-					},
-				},
-			})
 		end,
 	})
 end

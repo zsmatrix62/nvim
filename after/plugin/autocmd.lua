@@ -7,13 +7,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	group = grp_auto_save,
 })
 
-local grp_insert_leave = vim.api.nvim_create_augroup("insert_leave", { clear = true })
-
-vim.api.nvim_create_autocmd("BufWrite", {
-	pattern = "*",
-	command = "set ff=unix",
-})
-
 -- group save folding
 local grp_remember_fold = vim.api.nvim_create_augroup("remember foldings", { clear = true })
 vim.api.nvim_create_autocmd("BufWinLeave", {
@@ -26,6 +19,12 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 	pattern = { "*" },
 	command = ":silent! loadview",
 	group = grp_remember_fold,
+})
+
+-- auto compile packer after lua file written
+vim.api.nvim_create_autocmd("BufWritePost", {
+	pattern = { "*.lua" },
+	command = ":silent! PackerCompile",
 })
 
 -- overwrite highlight colors for indent line
