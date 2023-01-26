@@ -1,23 +1,27 @@
 local M = {}
 
 function M.require(use)
-	-- cmp sources - lsp
 	use({
-		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/nvim-cmp",
+		config = M.config_nvim_cmp,
+		event = "BufRead",
 		requires = {
-			"hrsh7th/nvim-cmp",
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
 			"onsails/lspkind-nvim",
 			"neovim/nvim-lspconfig",
+			{
+				"hrsh7th/cmp-nvim-lsp",
+				config = M.config_nvim_cmp_lsp,
+			},
 		},
-		config = M.config_nvim_cmp_lsp,
 	})
-	-- other cmp sources
-	use({ "ray-x/cmp-treesitter", after = "cmp-nvim-lsp" })
+
+	-- cmp sources
+	use({ "ray-x/cmp-treesitter", after = "nvim-cmp" })
 	use({
 		"saecki/crates.nvim",
-		after = "cmp-nvim-lsp",
+		after = "nvim-cmp",
 		tag = "v0.2.1",
 		requires = { "nvim-lua/plenary.nvim" },
 		config = function()
@@ -26,7 +30,7 @@ function M.require(use)
 	})
 	use({
 		"saadparwaiz1/cmp_luasnip",
-		after = "cmp-nvim-lsp",
+		after = "nvim-cmp",
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load({
 				paths = {
@@ -36,13 +40,13 @@ function M.require(use)
 			})
 		end,
 	})
-	use({ "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" })
-	use({ "hrsh7th/cmp-path", after = "cmp-nvim-lsp" })
-	use({ "hrsh7th/cmp-calc", after = "cmp-nvim-lsp" })
-	use({ "amarakon/nvim-cmp-buffer-lines", after = "cmp-nvim-lsp" })
+	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
+	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
+	use({ "hrsh7th/cmp-calc", after = "nvim-cmp" })
+	use({ "amarakon/nvim-cmp-buffer-lines", after = "nvim-cmp" })
 	use({
 		"uga-rosa/cmp-dictionary",
-		after = "cmp-nvim-lsp",
+		after = "nvim-cmp",
 		config = function()
 			require("cmp_dictionary").setup({
 				dic = {
@@ -121,7 +125,9 @@ function M.config_nvim_cmp_lsp()
 		end
 		lspConfig[lsp].setup(setup_options)
 	end
+end
 
+function M.config_nvim_cmp()
 	-- setup cmp-lsp
 	local lspkind = require("lspkind")
 	local luasnip = require("luasnip")
@@ -308,18 +314,18 @@ function M.config_nvim_cmp_lsp()
 			}),
 		},
 		sources = {
-			{ name = "calc", priority = 900 },
 			{ name = "nvim_lsp", priority = 900 },
-			{ name = "path", priority = 900 },
-			{ name = "luasnip", priority = 700 },
-			{ name = "buffer", priority = 600 },
-			{ name = "crates", priority = 100 },
-			{ name = "treesitter", priority = 100 },
-			{
-				name = "dictionary",
-				keyword_length = 2,
-				priority = 1,
-			},
+			-- { name = "calc", priority = 900 },
+			-- { name = "path", priority = 900 },
+			-- { name = "luasnip", priority = 700 },
+			-- { name = "buffer", priority = 600 },
+			-- { name = "crates", priority = 100 },
+			-- { name = "treesitter", priority = 100 },
+			-- {
+			-- 	name = "dictionary",
+			-- 	keyword_length = 2,
+			-- 	priority = 1,
+			-- },
 		},
 	})
 end
