@@ -2,9 +2,63 @@ local M = {}
 
 function M.require(use)
 	use({
+		"hrsh7th/nvim-cmp",
+		requires = {
+			"L3MON4D3/LuaSnip",
+			"rafamadriz/friendly-snippets",
+			"onsails/lspkind-nvim",
+			"neovim/nvim-lspconfig",
+		},
+	})
+
+	-- lsp interface and support
+	use({
+		"ray-x/lsp_signature.nvim",
+		config = function()
+			local cfg = {
+				debug = false,
+				log_path = vim.fn.stdpath("cache") .. "/lsp_signature.log",
+				verbose = false,
+				bind = true,
+				doc_lines = 10,
+				max_height = 12,
+				max_width = 80,
+				wrap = true,
+				floating_window = true,
+				floating_window_above_cur_line = true,
+				floating_window_off_x = 1,
+				floating_window_off_y = 0,
+				close_timeout = 4000,
+				fix_pos = false,
+				hint_enable = true,
+				hint_prefix = "🐼 ",
+				hint_scheme = "String",
+				hi_parameter = "LspSignatureActiveParameter",
+				handler_opts = {
+					border = "rounded",
+				},
+				always_trigger = false,
+				auto_close_after = nil,
+				extra_trigger_chars = {},
+				zindex = 20,
+				padding = "",
+				transparency = nil,
+				shadow_blend = 36,
+				shadow_guibg = "Black",
+				timer_interval = 200,
+				toggle_key = nil,
+				select_signature_key = nil,
+				move_cursor_key = nil,
+			}
+
+			require("lsp_signature").setup(cfg)
+		end,
+	})
+
+	-- cmp sources
+	use({
 		"hrsh7th/cmp-nvim-lsp",
-		requires = { "neovim/nvim-lspconfig" },
-		after = { "nvim-lspconfig", "lspkind-nvim", "nvim-cmp" },
+		after = { "nvim-cmp" },
 		config = M.config_nvim_cmp_lsp,
 	})
 	use({ "ray-x/cmp-treesitter", after = "nvim-cmp" })
@@ -33,25 +87,6 @@ function M.require(use)
 	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-calc", after = "nvim-cmp" })
 	use({ "amarakon/nvim-cmp-buffer-lines", after = "nvim-cmp" })
-	-- Copilot
-	-- use({
-	-- 	"zbirenbaum/copilot.lua",
-	-- 	event = "VimEnter",
-	-- 	config = function()
-	-- 		vim.defer_fn(function()
-	-- 			require("copilot").setup()
-	-- 		end, 100)
-	-- 	end,
-	-- })
-	-- use({
-	-- 	"zbirenbaum/copilot-cmp",
-	-- 	after = { "copilot.lua" },
-	-- 	config = function()
-	-- 		require("copilot_cmp").setup({
-	-- 			method = "getCompletionsCycling",
-	-- 		})
-	-- 	end,
-	-- })
 	use({
 		"uga-rosa/cmp-dictionary",
 		after = "nvim-cmp",
@@ -89,7 +124,6 @@ function M.config_nvim_cmp_lsp()
 		end
 		lspConfig[lsp].setup(setup_options)
 	end
-	lspConfig["sourcekit"].setup(setup_options)
 
 	-- setup cmp-lsp
 	local lspkind = require("lspkind")
