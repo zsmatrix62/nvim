@@ -315,17 +315,17 @@ function M.config_nvim_cmp()
 		},
 		sources = {
 			{ name = "nvim_lsp", priority = 900 },
-			-- { name = "calc", priority = 900 },
-			-- { name = "path", priority = 900 },
-			-- { name = "luasnip", priority = 700 },
-			-- { name = "buffer", priority = 600 },
-			-- { name = "crates", priority = 100 },
-			-- { name = "treesitter", priority = 100 },
-			-- {
-			-- 	name = "dictionary",
-			-- 	keyword_length = 2,
-			-- 	priority = 1,
-			-- },
+			{ name = "calc", priority = 900 },
+			{ name = "path", priority = 900 },
+			{ name = "luasnip", priority = 700 },
+			{ name = "buffer", priority = 600 },
+			{ name = "crates", priority = 100 },
+			{ name = "treesitter", priority = 100 },
+			{
+				name = "dictionary",
+				keyword_length = 2,
+				priority = 1,
+			},
 		},
 	})
 end
