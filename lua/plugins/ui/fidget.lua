@@ -1,8 +1,10 @@
-return require "utils.pluginConfig".NewConfig({
+return require("utils.pluginConfig").NewConfig({
 	require = function(use)
-		use { "j-hui/fidget.nvim", config = function()
-			require "fidget".setup(
-				{
+		use({
+			"j-hui/fidget.nvim",
+			event = "BufRead",
+			config = function()
+				require("fidget").setup({
 					text = {
 						spinner = "pipe", -- animation shown when tasks are ongoing
 						done = "✔", -- character shown when all tasks are complete
@@ -27,12 +29,12 @@ return require "utils.pluginConfig".NewConfig({
 						leftpad = true, -- right-justify text in fidget box
 						stack_upwards = true, -- list of tasks grows upwards
 						max_width = 0, -- maximum width of the fidget box
-						fidget = -- function to format fidget title
-						function(fidget_name, spinner)
+						-- function to format fidget title
+						fidget = function(fidget_name, spinner)
 							return string.format("%s %s", spinner, fidget_name)
 						end,
-						task = -- function to format each task line
-						function(task_name, message, percentage)
+						-- function to format each task line
+						task = function(task_name, message, percentage)
 							return string.format(
 								"%s%s [%s]",
 								message,
@@ -41,12 +43,9 @@ return require "utils.pluginConfig".NewConfig({
 							)
 						end,
 					},
-				}
-			)
-
-		end }
+				})
+			end,
+		})
 	end,
-	setup = function()
-	end
-
+	setup = function() end,
 })

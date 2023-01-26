@@ -1,9 +1,16 @@
 local M = {}
 
 function M.require(use)
-	use("ray-x/cmp-treesitter")
+	use({
+		"hrsh7th/cmp-nvim-lsp",
+		requires = { "neovim/nvim-lspconfig" },
+		after = { "nvim-lspconfig", "lspkind-nvim", "nvim-cmp" },
+		config = M.config_nvim_cmp_lsp,
+	})
+	use({ "ray-x/cmp-treesitter", after = "nvim-cmp" })
 	use({
 		"saecki/crates.nvim",
+		after = "nvim-cmp",
 		tag = "v0.2.1",
 		requires = { "nvim-lua/plenary.nvim" },
 		config = function()
@@ -12,7 +19,7 @@ function M.require(use)
 	})
 	use({
 		"saadparwaiz1/cmp_luasnip",
-		requires = { "L3MON4D3/LuaSnip" },
+		after = "nvim-cmp",
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load({
 				paths = {
@@ -22,11 +29,10 @@ function M.require(use)
 			})
 		end,
 	})
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-calc")
-	use("hrsh7th/cmp-nvim-lsp")
-	use("amarakon/nvim-cmp-buffer-lines")
+	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
+	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
+	use({ "hrsh7th/cmp-calc", after = "nvim-cmp" })
+	use({ "amarakon/nvim-cmp-buffer-lines", after = "nvim-cmp" })
 	-- Copilot
 	-- use({
 	-- 	"zbirenbaum/copilot.lua",
@@ -48,6 +54,7 @@ function M.require(use)
 	-- })
 	use({
 		"uga-rosa/cmp-dictionary",
+		after = "nvim-cmp",
 		config = function()
 			require("cmp_dictionary").setup({
 				dic = {
@@ -61,7 +68,30 @@ function M.require(use)
 	})
 end
 
-function M.setup()
+function M.config_nvim_cmp_lsp()
+	-- setup cmp lang config
+	local manson = require("plugins.lsp.manson")
+	local lspConfig = require("lspconfig")
+	local capabilities = require("cmp_nvim_lsp").default_capabilities(
+		vim.lsp.protocol.make_client_capabilities(),
+		{ snippetSupport = true }
+	)
+
+	local setup_options = {
+		capabilities = capabilities,
+		settings = {},
+	}
+
+	for _, lsp in ipairs(manson.ENSURE_INSTALLS) do
+		local ok, optionModule = pcall(require, "plugins.lsp.lang-setup-options." .. lsp)
+		if ok then
+			setup_options = optionModule.config(setup_options)
+		end
+		lspConfig[lsp].setup(setup_options)
+	end
+	lspConfig["sourcekit"].setup(setup_options)
+
+	-- setup cmp-lsp
 	local lspkind = require("lspkind")
 	local luasnip = require("luasnip")
 	local cmp = require("cmp")

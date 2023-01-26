@@ -2,6 +2,7 @@ return require("utils.pluginConfig").NewConfig({
 	require = function(use)
 		use({
 			"folke/todo-comments.nvim",
+			event = "BufRead",
 			requires = "nvim-lua/plenary.nvim",
 			config = function()
 				require("todo-comments").setup({

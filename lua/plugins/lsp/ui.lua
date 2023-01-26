@@ -60,17 +60,6 @@ return {
 			branch = "main",
 			config = function()
 				require("lspsaga").setup({
-					diagnostic = {
-						twice_into = true,
-						show_code_action = true,
-						show_source = true,
-						keys = {
-							exec_action = "o",
-							quit = "q",
-							go_action = "g",
-						},
-					},
-
 					ui = {
 						-- currently only round theme
 						theme = "round",
@@ -104,37 +93,26 @@ return {
 					},
 				})
 
+				-- preview definition
+				vim.keymap.set("n", "gp", "<cmd>Lspsaga peek_definition<cr>", { silent = true, noremap = true })
 				-- hover doc
-				-- local action = require("lspsaga.action")
 				vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
 				vim.keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
 				-- code action
-				-- local action = require("lspsaga.codeaction")
 				vim.keymap.set("n", "<leader>q", "<cmd>Lspsaga code_action<CR>", { silent = true, noremap = true })
 				vim.keymap.set("n", "<space>q", "<cmd>Lspsaga code_action<CR>", { silent = true, noremap = true })
 				-- rename
 				vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<cr>", { silent = true, noremap = true })
 
-				-- preview definition
-				vim.keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<cr>", { silent = true, noremap = true })
-
 				local diagnostic = require("lspsaga.diagnostic")
 				-- jump diagnostic
-				vim.keymap.set("n", "[g", diagnostic.goto_prev, { silent = true, noremap = true })
-				vim.keymap.set("n", "]g", diagnostic.goto_next, { silent = true, noremap = true })
-				vim.keymap.set("n", "ng", diagnostic.goto_prev, { silent = true, noremap = true })
-				vim.keymap.set("n", "mg", diagnostic.goto_next, { silent = true, noremap = true })
+				vim.keymap.set("n", "pg", diagnostic.goto_prev, { silent = true, noremap = true })
+				vim.keymap.set("n", "ng", diagnostic.goto_next, { silent = true, noremap = true })
 				-- or jump to error
-				vim.keymap.set("n", "[e", function()
+				vim.keymap.set("n", "pe", function()
 					diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
-				end, { silent = true, noremap = true })
-				vim.keymap.set("n", "]e", function()
-					diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
 				end, { silent = true, noremap = true })
 				vim.keymap.set("n", "ne", function()
-					diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
-				end, { silent = true, noremap = true })
-				vim.keymap.set("n", "me", function()
 					diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
 				end, { silent = true, noremap = true })
 			end,

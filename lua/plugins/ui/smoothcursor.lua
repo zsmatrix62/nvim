@@ -2,6 +2,7 @@ return {
 	require = function(use)
 		use({
 			"gen740/SmoothCursor.nvim",
+			event = "BufRead",
 			config = function()
 				local default = {
 					autostart = true,

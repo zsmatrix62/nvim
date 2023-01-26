@@ -12,6 +12,8 @@ vim.o.background = "dark"
 vim.o.number = true
 vim.o.relativenumber = true
 
+vim.opt.iskeyword:append("-")
+
 vim.api.nvim_command("set nohlsearch")
 vim.api.nvim_command("noswapfile")
 vim.api.nvim_command("set mouse-=a")

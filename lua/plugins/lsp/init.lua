@@ -2,22 +2,37 @@ local M = {}
 
 local ms = {
 	require("plugins.lsp.cmp"),
-	require("plugins.lsp.copilot"),
 	require("plugins.lsp.keys"),
 	require("plugins.lsp.manson"),
 	require("plugins.lsp.ui"),
-	-- require("plugins.lsp.lsp_lines"),
 }
+
+local function config_nvim_cmp()
+	local manson = require("plugins.lsp.manson")
+	manson.setup()
+end
+
+function M.setup(cb)
+	require("utils.pluginConfig").SetupModules(ms)
+	pcall(cb)
+end
 
 function M.require(use)
 	use({
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
-		"alexaandru/nvim-lspupdate",
-		"neovim/nvim-lspconfig",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	})
-	use({ "hrsh7th/nvim-cmp" })
-	use("onsails/lspkind-nvim")
+	use({
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		config = config_nvim_cmp,
+		requires = {
+			"L3MON4D3/LuaSnip",
+			"rafamadriz/friendly-snippets",
+			"onsails/lspkind-nvim",
+		},
+	})
 
 	-- lsp interface and support
 	use({
@@ -64,36 +79,6 @@ function M.require(use)
 	})
 
 	require("utils.pluginConfig").RequireModules(ms, use)
-end
-
-function M.setup()
-	local manson = require("plugins.lsp.manson")
-	manson.setup()
-	require("plugins.lsp.cmp").setup()
-	require("plugins.lsp.keys")
-	require("plugins.lsp.copilot")
-
-	local lspConfig = require("lspconfig")
-
-	local capabilities = require("cmp_nvim_lsp").default_capabilities(
-		vim.lsp.protocol.make_client_capabilities(),
-		{ snippetSupport = true }
-	)
-
-	local setup_options = {
-		capabilities = capabilities,
-		settings = {},
-	}
-
-	for _, lsp in ipairs(manson.ENSURE_INSTALLS) do
-		local ok, optionModule = pcall(require, "plugins.lsp.lang-setup-options." .. lsp)
-		if ok then
-			setup_options = optionModule.config(setup_options)
-		end
-		lspConfig[lsp].setup(setup_options)
-	end
-	lspConfig["sourcekit"].setup(setup_options)
-	require("utils.pluginConfig").SetupModules(ms)
 end
 
 return M

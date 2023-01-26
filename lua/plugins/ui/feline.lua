@@ -1,8 +1,10 @@
-return require "utils.pluginConfig".NewConfig({
+return require("utils.pluginConfig").NewConfig({
 	require = function(use)
-		use { 'feline-nvim/feline.nvim',
+		use({
+			"feline-nvim/feline.nvim",
+			event = "BufRead",
 			requires = {
-				'SmiteshP/nvim-navic'
+				"SmiteshP/nvim-navic",
 			},
 			config = function()
 				vim.opt.termguicolors = true
@@ -268,13 +270,16 @@ return require "utils.pluginConfig".NewConfig({
 							bg = "cyan",
 						},
 					},
-					right_sep = { {
-						str = " ",
-						hl = {
-							fg = "NONE",
-							bg = "cyan",
+					right_sep = {
+						{
+							str = " ",
+							hl = {
+								fg = "NONE",
+								bg = "cyan",
+							},
 						},
-					}, " " },
+						" ",
+					},
 				}
 
 				-- nvimGps
@@ -322,13 +327,16 @@ return require "utils.pluginConfig".NewConfig({
 							bg = "cyan",
 						},
 					},
-					right_sep = { {
-						str = " ",
-						hl = {
-							fg = "NONE",
-							bg = "cyan",
+					right_sep = {
+						{
+							str = " ",
+							hl = {
+								fg = "NONE",
+								bg = "cyan",
+							},
 						},
-					}, " " },
+						" ",
+					},
 				}
 
 				require("feline").setup({
@@ -344,9 +352,8 @@ return require "utils.pluginConfig".NewConfig({
 					components = winbar_components,
 					force_inactive = force_inactive,
 				})
-			end
-		}
+			end,
+		})
 	end,
-	setup = function()
-	end
+	setup = function() end,
 })

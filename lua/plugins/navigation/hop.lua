@@ -2,6 +2,7 @@ return {
 	require = function(use)
 		use({
 			"phaazon/hop.nvim",
+			event = "BufRead",
 			config = function()
 				require("hop").setup({
 					-- keys = 'asdfghjklweruiocvbnm',

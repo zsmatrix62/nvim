@@ -41,7 +41,6 @@ local function packer_startup(use)
 		require("plugins.neovide"),
 	}
 	use("wbthomason/packer.nvim")
-	use({ "L3MON4D3/LuaSnip", requires = "rafamadriz/friendly-snippets" })
 
 	for _, m in ipairs(configItems) do
 		if m.require ~= nil then

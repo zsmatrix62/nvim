@@ -2,6 +2,7 @@ return require("utils.pluginConfig").NewConfig({
 	require = function(use)
 		use({
 			"lukas-reineke/indent-blankline.nvim",
+			event = "BufRead",
 			config = function()
 				vim.opt.termguicolors = true
 				vim.opt.list = true

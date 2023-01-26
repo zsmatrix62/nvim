@@ -11,6 +11,7 @@ local ms = {
 	require("plugins.editing.comment"),
 	require("plugins.editing.repeat"),
 	require("plugins.editing.ts-auto-tag"),
+	require("plugins.editing.swap"),
 }
 
 return require("utils.pluginConfig").NewConfig({
