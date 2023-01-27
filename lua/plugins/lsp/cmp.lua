@@ -4,7 +4,6 @@ function M.require(use)
 	use({
 		"hrsh7th/nvim-cmp",
 		config = M.config_nvim_cmp,
-		event = "BufRead",
 		requires = {
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
