@@ -107,18 +107,21 @@ function M.config_nvim_cmp_lsp()
 	-- setup cmp lang config
 	local manson = require("plugins.lsp.manson")
 	local lspConfig = require("lspconfig")
-	local capabilities = require("cmp_nvim_lsp").default_capabilities(
-		vim.lsp.protocol.make_client_capabilities(),
-		{ snippetSupport = true }
-	)
 
-	local setup_options = {
-		capabilities = capabilities,
-		settings = {},
-	}
+	local function init_setup_options()
+		local capabilities = require("cmp_nvim_lsp").default_capabilities(
+			vim.lsp.protocol.make_client_capabilities(),
+			{ snippetSupport = true }
+		)
+		return {
+			capabilities = capabilities,
+			settings = {},
+		}
+	end
 
 	for _, lsp in ipairs(manson.ENSURE_INSTALLS) do
-		local ok, optionModule = pcall(require, "plugins.lsp.lang-setup-options." .. lsp)
+		local ok, optionModule = pcall(require, "plugins.lsp.lsp-setup-settings." .. lsp)
+		local setup_options = init_setup_options()
 		if ok then
 			setup_options = optionModule.config(setup_options)
 		end

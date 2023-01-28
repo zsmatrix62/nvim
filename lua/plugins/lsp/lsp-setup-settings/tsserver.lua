@@ -1,7 +1,7 @@
 local M = {}
 
 function M.config(setup_options)
-	setup_options.settings["tsserver"] = {
+	setup_options.settings = {
 		typescript = {
 			inlayHints = {
 				includeInlayParameterNameHints = "all",
