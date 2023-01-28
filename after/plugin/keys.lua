@@ -15,6 +15,8 @@ keymap("n", "mm", ":silent Neoformat | silent! wa<cr>", { silent = true, noremap
 -- map line start and end
 keymap("n", "H", "^", { silent = true, noremap = false })
 keymap("n", "L", "$", { silent = true, noremap = false })
+keymap("v", "H", "^", { silent = true, noremap = false })
+keymap("v", "L", "$", { silent = true, noremap = false })
 
 local winPrefix = "nw"
 keymap("n", winPrefix .. "c", "<c-w>c", keymapopts)
