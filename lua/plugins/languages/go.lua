@@ -11,7 +11,11 @@ return require("utils.pluginConfig").NewConfig({
 		})
 	end,
 	setup = function()
-		require("go").setup()
+		require("go").setup({
+			lsp_inlay_hints = {
+				enable = false,
+			},
+		})
 		require("telescope").load_extension("goimpl")
 		vim.api.nvim_set_keymap(
 			"n",
