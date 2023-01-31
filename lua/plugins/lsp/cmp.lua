@@ -58,6 +58,28 @@ function M.require(use)
 		end,
 	})
 
+	-- -- cmp copilot sources
+	-- use({
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	after = { "copilot.lua" },
+	-- 	requires = {
+	-- 		{
+	-- 			"zbirenbaum/copilot.lua",
+	-- 			cmd = "Copilot",
+	-- 			event = "BufRead",
+	-- 			config = function()
+	-- 				require("copilot").setup({
+	-- 					-- suggestion = { enabled = false },
+	-- 					-- panel = { enabled = false },
+	-- 				})
+	-- 			end,
+	-- 		},
+	-- 	},
+	-- 	config = function()
+	-- 		require("copilot_cmp").setup({})
+	-- 	end,
+	-- })
+
 	-- lsp interface and support
 	use({
 		"ray-x/lsp_signature.nvim",
@@ -135,9 +157,17 @@ function M.config_nvim_cmp()
 	local luasnip = require("luasnip")
 	local cmp = require("cmp")
 
+	-- local has_words_before = function()
+	-- 	local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
+	-- 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+	-- end
+
 	local has_words_before = function()
+		if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+			return false
+		end
 		local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
-		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+		return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
 	end
 
 	local select_pre_item = cmp.mapping(function(fallback)
@@ -155,8 +185,7 @@ function M.config_nvim_cmp()
 
 	local select_next_item = cmp.mapping(function(fallback)
 		if cmp.visible() then
-			-- cmp.select_next_item()
-			cmp.select_next_item({ behavior = cmp.SelectBehavior.Replace })
+			cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 		elseif luasnip.expandable() then
 			luasnip.expand()
 		elseif luasnip.expand_or_jumpable() then
@@ -190,15 +219,12 @@ function M.config_nvim_cmp()
 			["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 			["<C-e>"] = cmp.mapping.abort(),
 			-- ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-			["<CR>"] = cmp.mapping.confirm({
-				-- this is the important line
-				behavior = cmp.ConfirmBehavior.Replace,
-				select = false,
-			}),
+			["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+			["<c-o>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
 			["<Tab>"] = select_next_item,
-			["<C-n>"] = select_next_item,
+			["<C-j>"] = select_next_item,
 			["<S-Tab>"] = select_pre_item,
-			["<C-p>"] = select_pre_item,
+			["<C-k>"] = select_pre_item,
 		}),
 		formatting = {
 			fields = { "kind", "abbr", "menu" },
@@ -316,6 +342,7 @@ function M.config_nvim_cmp()
 			}),
 		},
 		sources = {
+			-- { name = "copilot", priority = 1000 },
 			{ name = "nvim_lsp", priority = 900 },
 			{ name = "calc", priority = 900 },
 			{ name = "path", priority = 900 },

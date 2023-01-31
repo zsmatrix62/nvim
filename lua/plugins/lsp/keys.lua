@@ -1,7 +1,7 @@
 return {
 	setup = function()
 		vim.api.nvim_set_keymap("n", "gt", "<cmd>Telescope lsp_type_definitions<cr>", { silent = true })
-		vim.api.nvim_set_keymap("n", "gi", "<cmd>Telescope lsp_implementations<cr>", { silent = true })
+		vim.api.nvim_set_keymap("n", "<leader>gi", "<cmd>Telescope lsp_implementations<cr>", { silent = true })
 		-- goto reference
 		vim.api.nvim_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", { silent = true })
 		-- goto definition

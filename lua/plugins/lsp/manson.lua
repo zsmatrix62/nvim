@@ -17,6 +17,7 @@ local M = {
 		"jsonls",
 		"bufls",
 		"html",
+		-- "tailwindcss",
 	},
 }
 
