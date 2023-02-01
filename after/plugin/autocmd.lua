@@ -1,12 +1,5 @@
 -- -- Group auto save buffer
 
-local grp_auto_save = vim.api.nvim_create_augroup("autosave", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	command = ":Neoformat",
-	group = grp_auto_save,
-})
-
 -- group save folding
 local grp_remember_fold = vim.api.nvim_create_augroup("remember foldings", { clear = true })
 vim.api.nvim_create_autocmd("BufWinLeave", {

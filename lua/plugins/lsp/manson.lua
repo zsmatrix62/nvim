@@ -52,6 +52,7 @@ function M.setup() -- auto install configurations
 			"prettier",
 			"sql-formatter",
 			"gofumpt",
+			"golines",
 			"rustfmt",
 			"stylua",
 			"buf",

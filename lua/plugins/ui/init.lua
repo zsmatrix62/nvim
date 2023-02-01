@@ -7,7 +7,7 @@ local modules = {
 	require("plugins.ui.cursorline"),
 	require("plugins.ui.smoothcursor"),
 	require("plugins.ui.windowpicker"),
-	-- require("plugins.ui.transparent"),
+	require("plugins.ui.transparent"),
 }
 
 return require("utils.pluginConfig").NewConfig({

@@ -36,6 +36,12 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSi
 vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
+vim.api.nvim_exec(
+	[[
+let g:python3_host_prog = "/usr/local/bin/python"
+]],
+	true
+)
 --  Default scroll off
 vim.api.nvim_exec(
 	[[
