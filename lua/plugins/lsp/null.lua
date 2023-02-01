@@ -10,6 +10,7 @@ return {
 				local null_ls = require("null-ls")
 				null_ls.setup({
 					sources = {
+						-- formatters
 						null_ls.builtins.formatting.stylua,
 						null_ls.builtins.formatting.prettier,
 						null_ls.builtins.formatting.clang_format,
@@ -19,9 +20,12 @@ return {
 						null_ls.builtins.formatting.goimports,
 						null_ls.builtins.formatting.golines,
 						null_ls.builtins.formatting.buf,
+						null_ls.builtins.formatting.taplo,
 						null_ls.builtins.formatting.rustfmt,
-						null_ls.builtins.formatting.sqlformat,
-						null_ls.builtins.completion.spell,
+						null_ls.builtins.formatting.swiftformat,
+						-- lints
+						null_ls.builtins.diagnostics.pylint,
+						null_ls.builtins.diagnostics.staticcheck,
 					},
 					on_attach = function(client, bufnr)
 						if client.supports_method("textDocument/formatting") then
