@@ -1,7 +1,6 @@
--- -- Group auto save buffer
-
 -- group save folding
 local grp_remember_fold = vim.api.nvim_create_augroup("remember foldings", { clear = true })
+
 vim.api.nvim_create_autocmd("BufWinLeave", {
 	pattern = { "*" },
 	command = ":silent! mkview",

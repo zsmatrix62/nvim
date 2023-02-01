@@ -8,16 +8,12 @@ return {
 			"jose-elias-alvarez/null-ls.nvim",
 			config = function()
 				local null_ls = require("null-ls")
-
 				null_ls.setup({
-					debug = true,
 					sources = {
 						null_ls.builtins.formatting.stylua,
 						null_ls.builtins.formatting.prettier,
 						null_ls.builtins.formatting.clang_format,
-						null_ls.builtins.formatting.autopep8.with({
-							extra_args = { "--aggressive", "--aggressive" },
-						}),
+						null_ls.builtins.formatting.autopep8,
 						null_ls.builtins.formatting.gofmt,
 						null_ls.builtins.formatting.gofumpt,
 						null_ls.builtins.formatting.goimports,
@@ -34,12 +30,14 @@ return {
 								group = augroup,
 								buffer = bufnr,
 								callback = function()
-									vim.lsp.buf.format()
+									vim.lsp.buf.format({ bufnr = 0 })
 								end,
 							})
 						end
 					end,
 				})
+				vim.api.nvim_set_keymap("n", "<leader>s", ":lua vim.lsp.buf.format()<cr>", { silent = true })
+				vim.api.nvim_set_keymap("v", "<leader>s", ":lua vim.lsp.buf.format()<cr>", { silent = true })
 			end,
 		})
 	end,

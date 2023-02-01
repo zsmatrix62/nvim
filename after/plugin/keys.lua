@@ -11,7 +11,8 @@ keymap("i", "jj", "<Esc>", keymapopts)
 keymap("i", "ji", "<Esc>A;<esc>", keymapopts)
 
 -- quick save
-keymap("n", "mm", ":silent! wa<cr>", { silent = true, noremap = false })
+keymap("n", "mm", ":wa<cr>", { silent = true, noremap = true })
+
 -- map line start and end
 keymap("n", "H", "^", { silent = true, noremap = false })
 keymap("n", "L", "$", { silent = true, noremap = false })
