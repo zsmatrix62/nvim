@@ -1,7 +1,5 @@
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-local h = require("null-ls.helpers")
-
 return {
 	require = function(use)
 		use({
