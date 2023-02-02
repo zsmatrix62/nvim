@@ -17,12 +17,12 @@ return {
 					{ silent = true }
 				)
 
-				-- vim.api.nvim_set_keymap(
-				-- 	"",
-				-- 	"<space>r",
-				-- 	":Neotree source=buffers reveal=true position=float toggle=true<cr>",
-				-- 	{ silent = true }
-				-- )
+				vim.api.nvim_set_keymap(
+					"",
+					"<space>r",
+					":Neotree source=buffers reveal=true position=float toggle=true<cr>",
+					{ silent = true }
+				)
 
 				vim.api.nvim_set_keymap(
 					"",
@@ -33,7 +33,6 @@ return {
 
 				require("neo-tree").setup({
 					event_handlers = {
-
 						{
 							event = "file_opened",
 							handler = function(_)
@@ -43,6 +42,7 @@ return {
 						},
 					},
 					close_if_last_window = false,
+					commands = {},
 					window = {
 						position = "float",
 						width = 40,
@@ -55,9 +55,8 @@ return {
 								"toggle_node",
 								nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
 							},
-							["o"] = "open",
 							["l"] = "open",
-							-- ["<cr>"] = "open",
+							-- ["<cr>"] = "system_open",
 							-- ["s"] = "open_split",
 							-- ["v"] = "open_vsplit",
 							["s"] = "split_with_window_picker",
@@ -92,12 +91,32 @@ return {
 							["?"] = "show_help",
 						},
 					},
-					commands = {},
 					nesting_rules = {
 						["css"] = { "css.map" },
 						["js"] = { "js.map" },
 					},
 					filesystem = {
+						commands = {
+							run_command_in = function(state)
+								local node = state.tree:get_node()
+								local path = node:get_id()
+								if node.type == "file" then
+									vim.api.nvim_input(": " .. path .. "<Home>")
+								end
+								if node.type == "directory" then
+									vim.api.nvim_input(":!cd " .. path .. " && ")
+								end
+							end,
+							system_open = function(state)
+								local node = state.tree:get_node()
+								local path = node:get_id()
+								-- macOs: open file in default application in the background.
+								-- Probably you need to adapt the Linux recipe for manage path with spaces. I don't have a mac to try.
+								vim.api.nvim_command("silent !open -g " .. path)
+								-- Linux: open file in default application
+								vim.api.nvim_command(string.format("silent !xdg-open '%s'", path))
+							end,
+						},
 						filtered_items = {
 							visible = false, -- when true, they will just be displayed differently than normal items
 							hide_dotfiles = true,
@@ -132,10 +151,9 @@ return {
 								["zh"] = "toggle_hidden",
 								["f"] = "fuzzy_finder",
 								["D"] = "fuzzy_finder_directory",
-								-- ["f"] = "filter_on_submit",
 								["F"] = "clear_filter",
-								-- ["[g"] = "prev_git_modified",
-								-- ["]g"] = "next_git_modified",
+								["<leader>o"] = "system_open",
+								["i"] = "run_command_in",
 							},
 						},
 					},
