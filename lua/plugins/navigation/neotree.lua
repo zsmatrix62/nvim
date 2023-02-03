@@ -55,6 +55,7 @@ return {
 								"toggle_node",
 								nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
 							},
+							["o"] = "open",
 							["l"] = "open",
 							-- ["<cr>"] = "system_open",
 							-- ["s"] = "open_split",
@@ -104,7 +105,11 @@ return {
 									vim.api.nvim_input(": " .. path .. "<Home>")
 								end
 								if node.type == "directory" then
-									vim.api.nvim_input(":!cd " .. path .. " && ")
+									vim.api.nvim_input(":silent! !cd " .. path .. " && ")
+									-- local events = require("neo-tree.events")
+									-- vim.schedule(function()
+									-- 	events.fire_event(events.FS_EVENT)
+									-- end)
 								end
 							end,
 							system_open = function(state)
