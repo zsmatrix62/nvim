@@ -16,7 +16,7 @@ return {
 					":Neotree source=filesystem reveal=true position=float toggle=true<cr>",
 					{ silent = true }
 				)
-				-- test
+
 				vim.api.nvim_set_keymap(
 					"",
 					"<space>r",
@@ -106,10 +106,11 @@ return {
 								end
 								if node.type == "directory" then
 									vim.api.nvim_input(":silent! !cd " .. path .. " && ")
-									-- local events = require("neo-tree.events")
-									-- vim.schedule(function()
-									-- 	events.fire_event(events.FS_EVENT)
-									-- end)
+									local events = require("neo-tree.events")
+									vim.schedule(function()
+										print(path)
+										events.fire_event(events.FS_EVENT)
+									end)
 								end
 							end,
 							system_open = function(state)

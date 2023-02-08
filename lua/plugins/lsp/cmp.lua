@@ -218,7 +218,7 @@ function M.config_nvim_cmp()
 			["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 			["<C-e>"] = cmp.mapping.abort(),
 			-- ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-			["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Select, select = false }),
+			["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Select, select = true }),
 			["<c-o>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Select, select = true }),
 			["<Tab>"] = select_next_item,
 			["<C-j>"] = select_next_item,
