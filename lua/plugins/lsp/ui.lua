@@ -70,7 +70,7 @@ return {
 		use({
 			"glepnir/lspsaga.nvim",
 			branch = "main",
-			commit = "1289578fe42f45727890549e26da35d885cfea5e",
+			after = "nvim-treesitter",
 			config = function()
 				require("lspsaga").setup({
 					ui = {
