@@ -8,6 +8,7 @@ local M = {
 		"cssmodules_ls",
 		"dockerls",
 		"marksman",
+		"svelte",
 		-- "clangd",
 		"cssls",
 		"taplo",

@@ -23,6 +23,7 @@ return {
 						"gitignore",
 						"gomod",
 						"markdown",
+						"markdown_inline",
 						"html",
 					},
 					sync_install = false,

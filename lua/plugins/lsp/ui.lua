@@ -70,6 +70,7 @@ return {
 		use({
 			"glepnir/lspsaga.nvim",
 			branch = "main",
+			commit = "1289578fe42f45727890549e26da35d885cfea5e",
 			config = function()
 				require("lspsaga").setup({
 					ui = {
@@ -117,13 +118,13 @@ return {
 				vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<cr>", { silent = true, noremap = true })
 
 				-- jump diagnostic
-				vim.keymap.set("n", "[g", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true, noremap = true })
-				vim.keymap.set("n", "]g", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true, noremap = true })
+				vim.keymap.set("n", "bg", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true, noremap = true })
+				vim.keymap.set("n", "ng", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true, noremap = true })
 				-- or jump to error
-				vim.keymap.set("n", "[e", function()
+				vim.keymap.set("n", "be", function()
 					require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
 				end, { silent = true, noremap = true })
-				vim.keymap.set("n", "]e", function()
+				vim.keymap.set("n", "ne", function()
 					require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
 				end, { silent = true, noremap = true })
 			end,
