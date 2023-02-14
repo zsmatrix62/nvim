@@ -13,7 +13,7 @@ local M = {
 		"cssls",
 		"taplo",
 		"angularls",
-		"sumneko_lua",
+		"lua_ls",
 		"jsonls",
 		"bufls",
 		"html",

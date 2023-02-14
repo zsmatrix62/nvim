@@ -5,7 +5,7 @@ local modules = {
 	require("plugins.ui.todo_comments"),
 	require("plugins.ui.indent_line"),
 	require("plugins.ui.cursorline"),
-	-- require("plugins.ui.smoothcursor"),
+	require("plugins.ui.smoothcursor"),
 	require("plugins.ui.windowpicker"),
 	require("plugins.ui.transparent"),
 }

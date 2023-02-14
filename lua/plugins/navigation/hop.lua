@@ -33,6 +33,7 @@ return {
 					{}
 				)
 				vim.api.nvim_set_keymap("n", "nn", ":HopChar2<cr>", { silent = true, noremap = true })
+				vim.api.nvim_set_keymap("n", "<space>l", ":HopLine<cr>", { silent = true, noremap = true })
 			end,
 		})
 	end,

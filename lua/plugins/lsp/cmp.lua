@@ -132,9 +132,9 @@ function M.config_nvim_cmp_lsp()
 
 	local function init_setup_options()
 		local capabilities = require("cmp_nvim_lsp").default_capabilities(
-			vim.lsp.protocol.make_client_capabilities(),
-			{ snippetSupport = true }
-		)
+				vim.lsp.protocol.make_client_capabilities(),
+				{ snippetSupport = true }
+			)
 		return {
 			capabilities = capabilities,
 			settings = {},
@@ -171,34 +171,34 @@ function M.config_nvim_cmp()
 	end
 
 	local select_pre_item = cmp.mapping(function(fallback)
-		if cmp.visible() then
-			cmp.select_prev_item()
-		elseif luasnip.jumpable(-1) then
-			luasnip.jump(-1)
-		else
-			fallback()
-		end
-	end, {
-		"i",
-		"s",
-	})
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif luasnip.jumpable( -1) then
+				luasnip.jump( -1)
+			else
+				fallback()
+			end
+		end, {
+			"i",
+			"s",
+		})
 
 	local select_next_item = cmp.mapping(function(fallback)
-		if cmp.visible() then
-			cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-		elseif luasnip.expandable() then
-			luasnip.expand()
-		elseif luasnip.expand_or_jumpable() then
-			luasnip.expand_or_jump()
-		elseif has_words_before() then
-			cmp.complete()
-		else
-			fallback()
-		end
-	end, {
-		"i",
-		"s",
-	})
+			if cmp.visible() then
+				cmp.select_next_item({ behavior = cmp.SelectBehavior.Replace })
+			elseif luasnip.expandable() then
+				luasnip.expand()
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			elseif has_words_before() then
+				cmp.complete()
+			else
+				fallback()
+			end
+		end, {
+			"i",
+			"s",
+		})
 
 	cmp.setup({
 		window = {
@@ -213,13 +213,13 @@ function M.config_nvim_cmp()
 		},
 		-- 快捷键
 		mapping = cmp.mapping.preset.insert({
-			["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+			["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs( -1), { "i", "c" }),
 			["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 			["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 			["<C-e>"] = cmp.mapping.abort(),
 			-- ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-			["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Select, select = true }),
-			["<c-o>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Select, select = true }),
+			["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+			["<c-o>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
 			["<Tab>"] = select_next_item,
 			["<C-j>"] = select_next_item,
 			["<S-Tab>"] = select_pre_item,
@@ -287,19 +287,19 @@ function M.config_nvim_cmp()
 					end
 
 					local menu = ({
-						nvim_lsp = "(LSP)",
-						emoji = "(Emoji)",
-						path = "(Path)",
-						calc = "(Calc)",
-						cmp_tabnine = "(Tabnine)",
-						vsnip = "(Snippet)",
-						luasnip = "(Snippet)",
-						buffer = "(Buffer)",
-						tmux = "(TMUX)",
-						copilot = "(Copilot)",
-						treesitter = "(TreeSitter)",
-						dictionary = "(Dictionary)",
-					})[entry.source.name]
+							nvim_lsp = "(LSP)",
+							emoji = "(Emoji)",
+							path = "(Path)",
+							calc = "(Calc)",
+							cmp_tabnine = "(Tabnine)",
+							vsnip = "(Snippet)",
+							luasnip = "(Snippet)",
+							buffer = "(Buffer)",
+							tmux = "(TMUX)",
+							copilot = "(Copilot)",
+							treesitter = "(TreeSitter)",
+							dictionary = "(Dictionary)",
+						})[entry.source.name]
 
 					if menu == "" then
 						menu = entry.source.name
@@ -316,12 +316,12 @@ function M.config_nvim_cmp()
 		},
 		sources = {
 			-- { name = "copilot", priority = 1000 },
-			{ name = "nvim_lsp", priority = 900 },
-			{ name = "calc", priority = 900 },
-			{ name = "path", priority = 900 },
-			{ name = "luasnip", priority = 700 },
-			{ name = "buffer", priority = 600 },
-			{ name = "crates", priority = 100 },
+			{ name = "nvim_lsp",   priority = 900 },
+			{ name = "calc",       priority = 900 },
+			{ name = "path",       priority = 900 },
+			{ name = "luasnip",    priority = 700 },
+			{ name = "buffer",     priority = 600 },
+			{ name = "crates",     priority = 100 },
 			{ name = "treesitter", priority = 100 },
 			{
 				name = "dictionary",

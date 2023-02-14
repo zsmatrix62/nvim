@@ -3,8 +3,9 @@ local M = {}
 function M.require(use)
 	use({
 		"akinsho/bufferline.nvim",
-		tag = "v2.*",
+		tag = "v3.*",
 		event = "BufRead",
+		requires = "nvim-tree/nvim-web-devicons",
 		config = function()
 			require("bufferline").setup({
 				options = {

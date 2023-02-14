@@ -1,6 +1,5 @@
 vim.o.foldmethod = "manual"
-vim.o.ignorecase = true
-vim.o.cursorline = true
+-- vim.o.cursorline = true
 vim.o.encoding = "UTF-8"
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 4
@@ -11,15 +10,15 @@ vim.o.mouse = "a"
 vim.o.background = "dark"
 vim.o.number = true
 vim.o.relativenumber = true
-
+vim.opt.ignorecase = true
 vim.opt.iskeyword:append("-")
 
 vim.api.nvim_command("set nohlsearch")
 vim.api.nvim_command("noswapfile")
 vim.api.nvim_command("set mouse-=a")
 
-vim.api.nvim_command("set cursorline")
-vim.api.nvim_command("set cursorcolumn")
+-- vim.api.nvim_command("set cursorline")
+-- vim.api.nvim_command("set cursorcolumn")
 
 vim.api.nvim_command("set splitright")
 vim.api.nvim_command("set splitbelow")
