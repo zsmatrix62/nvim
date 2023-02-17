@@ -34,20 +34,19 @@ return {
 			end,
 		})
 
-		-- use {
-		-- 	'dinhhuy258/vim-local-history',
-		-- 	branch = "master",
-		-- 	run = function()
-		-- 		vim.cmd(":silent! !pip3 install pynvim")
-		-- 		vim.cmd(":silent! UpdateRemotePlugins")
-		-- 	end,
-		--
-		-- 	config = function()
-		-- 		-- Local History
-		-- 		local localDir = vim.fn.expand("~/.local/state/nvim/local-history")
-		-- 		vim.api.nvim_command([[let g:local_history_path = ']] .. localDir .. "'")
-		-- 		vim.api.nvim_set_keymap("n", "dl", [[:LocalHistoryToggle<cr>]], {})
-		-- 	end
-		-- }
+		use({
+			"dinhhuy258/vim-local-history",
+			branch = "master",
+			run = function()
+				vim.cmd(":silent! !pip3 install pynvim")
+				vim.cmd(":silent! UpdateRemotePlugins")
+			end,
+			config = function()
+				-- Local History
+				local localDir = vim.fn.expand("~/.local/state/nvim/local-history")
+				vim.api.nvim_command([[let g:local_history_path = ']] .. localDir .. "'")
+				vim.api.nvim_set_keymap("n", "dl", [[:LocalHistoryToggle<cr>]], {})
+			end,
+		})
 	end,
 }

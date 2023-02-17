@@ -3,7 +3,7 @@ return {
 		use({
 			"nvim-neo-tree/neo-tree.nvim",
 			git = "https://github.com/nvim-neo-tree/neo-tree.nvim.git",
-			branch = "v2.x",
+			branch = "main",
 			requires = {
 				"nvim-lua/plenary.nvim",
 				"MunifTanjim/nui.nvim",
@@ -133,7 +133,7 @@ return {
 								".cargo",
 							},
 							hide_by_pattern = { -- uses glob style patterns
-								--"*.meta"
+								"*venv",
 							},
 							never_show = { -- remains hidden even if visible is toggled to true
 								".DS_Store",

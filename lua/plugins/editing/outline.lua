@@ -14,8 +14,10 @@ return {
 						min_width = 30,
 					},
 					close_automatic_events = {
-						-- "switch_buffer",
+						"switch_buffer",
+						"unfocus",
 					},
+					keymaps = {},
 				})
 				vim.api.nvim_set_keymap("", "<space>t", ":AerialToggle right<cr>", { silent = true })
 			end,

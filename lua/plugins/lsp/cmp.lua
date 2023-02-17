@@ -17,7 +17,7 @@ function M.require(use)
 	})
 
 	-- cmp sources
-	use({ "ray-x/cmp-treesitter", after = "nvim-cmp" })
+	-- use({ "ray-x/cmp-treesitter", after = "nvim-cmp" })
 	use({
 		"saecki/crates.nvim",
 		after = "nvim-cmp",
@@ -201,6 +201,12 @@ function M.config_nvim_cmp()
 		})
 
 	cmp.setup({
+		matching = {
+			disallow_fuzzy_matching = false,
+			disallow_partial_fuzzy_matching = false,
+			disallow_partial_matching = false,
+			disallow_prefix_unmatching = false,
+		},
 		window = {
 			completion = cmp.config.window.bordered(),
 			documentation = cmp.config.window.bordered(),
@@ -314,19 +320,23 @@ function M.config_nvim_cmp()
 				end,
 			}),
 		},
+		-- experimental = {
+		-- 	ghost_text = true,
+		-- },
 		sources = {
 			-- { name = "copilot", priority = 1000 },
-			{ name = "nvim_lsp",   priority = 900 },
-			{ name = "calc",       priority = 900 },
-			{ name = "path",       priority = 900 },
-			{ name = "luasnip",    priority = 700 },
-			{ name = "buffer",     priority = 600 },
-			{ name = "crates",     priority = 100 },
-			{ name = "treesitter", priority = 100 },
+			{ name = "nvim_lsp", priority = 900 },
+			{ name = "calc",     priority = 900 },
+			{ name = "path",     priority = 900 },
+			{ name = "luasnip",  priority = 700 },
+			{ name = "buffer",   priority = 600 },
+			{ name = "crates",   priority = 100 },
+			-- { name = "treesitter", priority = 100 },
 			{
 				name = "dictionary",
 				keyword_length = 2,
 				priority = 1,
+				max_item_count = 5,
 			},
 		},
 	})
