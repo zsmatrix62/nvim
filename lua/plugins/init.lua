@@ -39,6 +39,7 @@ local function packer_startup(use)
 		require("plugins.tools"),
 		require("plugins.utils"),
 		require("plugins.neovide"),
+		require("plugins.aicommits"),
 	}
 	use("wbthomason/packer.nvim")
 
