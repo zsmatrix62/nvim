@@ -35,10 +35,9 @@ return {
 				vim.api.nvim_set_keymap("n", "nn", ":HopChar2<cr>", { silent = true, noremap = true })
 				vim.api.nvim_set_keymap("n", "nl", ":HopLineStart<cr>", { silent = true, noremap = true })
 				vim.api.nvim_set_keymap("n", "nw", ":HopWord<cr>", { silent = true, noremap = true })
-				vim.api.nvim_set_keymap("n", "/", ":HopPatternMW<cr>", { silent = true, noremap = true })
+				-- vim.api.nvim_set_keymap("n", "/", ":HopPatternMW<cr>", { silent = true, noremap = true })
 			end,
 		})
 	end,
-	setup = function()
-	end,
+	setup = function() end,
 }
