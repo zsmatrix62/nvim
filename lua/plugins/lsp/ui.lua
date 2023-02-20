@@ -14,6 +14,7 @@ return {
 
 		use({
 			"lvimuser/lsp-inlayhints.nvim",
+			-- branch = "anticonceal",
 			config = function()
 				local status_ok, inlayhints = pcall(require, "lsp-inlayhints")
 				if not status_ok then
@@ -70,6 +71,7 @@ return {
 		use({
 			"glepnir/lspsaga.nvim",
 			branch = "main",
+			commit = "66bb06771789d677ef2b7c9a0bd57941298f6a9f",
 			after = "nvim-treesitter",
 			config = function()
 				require("lspsaga").setup({
@@ -102,7 +104,9 @@ return {
 							white = "#d1d4cf",
 							black = "#1c1c19",
 						},
-						kind = {},
+					},
+					symbol_in_winbar = {
+						enable = false,
 					},
 				})
 

@@ -10,20 +10,27 @@ return {
 		-- 	end,
 		-- })
 
+		use({
+			"LunarVim/lunar.nvim",
+			config = function()
+				vim.cmd([[colorscheme lunar]])
+			end,
+		})
+
 		-- use({
-		-- 	"LunarVim/lunar.nvim",
+		-- 	"catppuccin/nvim",
+		-- 	as = "catppuccin",
 		-- 	config = function()
-		-- 		vim.cmd([[colorscheme lunar]])
+		-- 		vim.cmd([[colorscheme catppuccin]])
 		-- 	end,
 		-- })
 
-		use({
-			"catppuccin/nvim",
-			as = "catppuccin",
-			config = function()
-				vim.cmd([[colorscheme catppuccin]])
-			end,
-		})
+		-- use({
+		-- 	"JoosepAlviste/palenightfall.nvim",
+		-- 	config = function()
+		-- 		vim.cmd([[colorscheme palenightfall]])
+		-- 	end,
+		-- })
 
 		-- use({ "rose-pine/neovim" })
 		-- use({ "rockyzhang24/arctic.nvim", requires = { "rktjmp/lush.nvim" } })
@@ -31,7 +38,6 @@ return {
 		-- vim.cmd([[colorscheme sonokai]])
 		-- vim.cmd([[colorscheme xcodedark]])
 		-- vim.cmd([[colorscheme arctic]])
-		-- vim.cmd([[colorscheme palenightfall]])
 		-- vim.cmd([[colorscheme tokyonight-night]])
 		-- vim.cmd([[colorscheme tokyonight-moon]])
 		-- vim.cmd([[colorscheme github_dark]])
@@ -62,5 +68,6 @@ return {
 		-- 	end,
 		-- })
 	end,
-	setup = function() end,
+	setup = function()
+	end,
 }

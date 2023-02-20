@@ -283,18 +283,18 @@ return require("utils.pluginConfig").NewConfig({
 				}
 
 				-- nvimGps
-				winbar_components.active[1][1] = {
-					provider = function()
-						return gps.get_location()
-					end,
-					enabled = function()
-						return gps.is_available()
-					end,
-					hl = {
-						fg = "orange",
-						style = "bold",
-					},
-				}
+				-- winbar_components.active[1][1] = {
+				-- 	provider = function()
+				-- 		return gps.get_location()
+				-- 	end,
+				-- 	enabled = function()
+				-- 		return gps.is_available()
+				-- 	end,
+				-- 	hl = {
+				-- 		fg = "orange",
+				-- 		style = "bold",
+				-- 	},
+				-- }
 
 				-- MID
 
@@ -348,10 +348,10 @@ return require("utils.pluginConfig").NewConfig({
 					force_inactive = force_inactive,
 				})
 
-				require("feline").winbar.setup({
-					components = winbar_components,
-					force_inactive = force_inactive,
-				})
+				-- require("feline").winbar.setup({
+				-- 	components = winbar_components,
+				-- 	force_inactive = force_inactive,
+				-- })
 			end,
 		})
 	end,
