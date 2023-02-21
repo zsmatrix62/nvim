@@ -1,6 +1,8 @@
 local ms = {
 	require("plugins.git.fugitive"),
 	require("plugins.git.gitsigns"),
+	require("plugins.git.diffview"),
+	require("plugins.git.neogit"),
 }
 return require("utils.pluginConfig").NewConfig({
 	require = function(use)
