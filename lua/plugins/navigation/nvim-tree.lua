@@ -9,6 +9,12 @@ M.require = function(use)
 		tag = "nightly", -- optional, updated every week. (see issue #1193)
 		config = function()
 			require("nvim-tree").setup({
+				update_cwd = false,
+				update_focused_file = {
+					enable = true,
+					update_cwd = false,
+					ignore_list = {},
+				},
 				view = {
 					mappings = {
 						custom_only = false,
