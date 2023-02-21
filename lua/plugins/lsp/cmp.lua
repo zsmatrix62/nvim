@@ -132,9 +132,9 @@ function M.config_nvim_cmp_lsp()
 
 	local function init_setup_options()
 		local capabilities = require("cmp_nvim_lsp").default_capabilities(
-				vim.lsp.protocol.make_client_capabilities(),
-				{ snippetSupport = true }
-			)
+			vim.lsp.protocol.make_client_capabilities(),
+			{ snippetSupport = true }
+		)
 		return {
 			capabilities = capabilities,
 			settings = {},
@@ -171,36 +171,51 @@ function M.config_nvim_cmp()
 	end
 
 	local select_pre_item = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif luasnip.jumpable( -1) then
-				luasnip.jump( -1)
-			else
-				fallback()
-			end
-		end, {
-			"i",
-			"s",
-		})
+		if cmp.visible() then
+			cmp.select_prev_item()
+		elseif luasnip.jumpable( -1) then
+			luasnip.jump( -1)
+		else
+			fallback()
+		end
+	end, {
+		"i",
+		"s",
+	})
 
 	local select_next_item = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item({ behavior = cmp.SelectBehavior.Replace })
-			elseif luasnip.expandable() then
-				luasnip.expand()
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
-			elseif has_words_before() then
-				cmp.complete()
-			else
-				fallback()
-			end
-		end, {
-			"i",
-			"s",
-		})
+		if cmp.visible() then
+			cmp.select_next_item({ behavior = cmp.SelectBehavior.Replace })
+		elseif luasnip.expandable() then
+			luasnip.expand()
+		elseif luasnip.expand_or_jumpable() then
+			luasnip.expand_or_jump()
+		elseif has_words_before() then
+			cmp.complete()
+		else
+			fallback()
+		end
+	end, {
+		"i",
+		"s",
+	})
+
+	local compare = require("cmp.config.compare")
 
 	cmp.setup({
+		sorting = {
+			comparators = {
+				compare.sort_text,
+				compare.offset,
+				compare.exact,
+				compare.score,
+				compare.recently_used,
+				compare.locality,
+				compare.kind,
+				compare.length,
+				compare.order,
+			},
+		},
 		matching = {
 			disallow_fuzzy_matching = false,
 			disallow_partial_fuzzy_matching = false,

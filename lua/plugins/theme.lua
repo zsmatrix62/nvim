@@ -3,19 +3,19 @@ return {
 		-- require termguicolors
 		vim.opt.termguicolors = true
 
-		-- use({
-		-- 	"folke/tokyonight.nvim",
-		-- 	config = function()
-		-- 		vim.cmd([[colorscheme tokyonight]])
-		-- 	end,
-		-- })
-
 		use({
-			"LunarVim/lunar.nvim",
+			"folke/tokyonight.nvim",
 			config = function()
-				vim.cmd([[colorscheme lunar]])
+				vim.cmd([[colorscheme tokyonight]])
 			end,
 		})
+
+		-- use({
+		-- 	"LunarVim/lunar.nvim",
+		-- 	config = function()
+		-- 		vim.cmd([[colorscheme lunar]])
+		-- 	end,
+		-- })
 
 		-- use({
 		-- 	"catppuccin/nvim",
@@ -68,6 +68,5 @@ return {
 		-- 	end,
 		-- })
 	end,
-	setup = function()
-	end,
+	setup = function() end,
 }

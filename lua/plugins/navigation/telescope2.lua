@@ -43,6 +43,7 @@ return require("utils.pluginConfig").NewConfig({
 				vim.api.nvim_set_keymap("n", "<space>2", ":Telescope live_grep<cr>", { silent = true })
 				vim.api.nvim_set_keymap("n", "<space>3", ":Telescope git_files<cr>", { silent = true })
 				vim.api.nvim_set_keymap("n", "<space>4", ":Telescope find_files<cr>", { silent = true })
+				vim.api.nvim_set_keymap("n", "/", ":Telescope current_buffer_fuzzy_find<cr>", { silent = true })
 			end,
 		})
 	end,
