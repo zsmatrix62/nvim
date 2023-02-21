@@ -1,39 +1,3 @@
-local utils = require("nvim-tree.utils")
-local core = require("nvim-tree.core")
-local api = require("nvim-tree.api")
-
-local function get_node_path(node)
-	if node.name == ".." then
-		return utils.path_remove_trailing(core.get_cwd())
-	else
-		return node.absolute_path
-	end
-end
-
-local function run_custom_command(node)
-	local node_path = get_node_path(node)
-	vim.api.nvim_input(":silent! !cd " .. node_path .. " && ")
-	api.tree.reload()
-end
-
-local lib = require("nvim-tree.lib")
-
-local git_add = function(node)
-	-- local node = lib.get_node_at_cursor()
-	local gs = node.git_status.file
-
-	-- If the file is untracked, unstaged or partially staged, we stage it
-	if gs == "??" or gs == "MM" or gs == "AM" or gs == " M" then
-		vim.cmd("silent !git add " .. node.absolute_path)
-
-		-- If the file is staged, we unstage
-	elseif gs == "M " or gs == "A " then
-		vim.cmd("silent !git restore --staged " .. node.absolute_path)
-	end
-
-	lib.refresh_tree()
-end
-
 return {
 	require = function(use)
 		use({
@@ -48,16 +12,16 @@ return {
 						mappings = {
 							custom_only = false,
 							list = {
-								{ key = "u", action = "dir_up" },
-								{ key = "g", action = "toggle_git_clean" },
-								{ key = "v", action = "vsplit" },
-								{ key = ".", action = "cd" },
-								{ key = "d", action = "trash" },
-								{ key = "D", action = "trash" },
+								{ key = "u",  action = "dir_up" },
+								{ key = "g",  action = "toggle_git_clean" },
+								{ key = "v",  action = "vsplit" },
+								{ key = ".",  action = "cd" },
+								{ key = "d",  action = "trash" },
+								{ key = "D",  action = "trash" },
 								{ key = "yy", action = "copy" },
-								{ key = "p", action = "paste" },
-								{ key = "i", action = "run_custom_command", action_cb = run_custom_command },
-								{ key = "ga", action = "git_add", action_cb = git_add },
+								{ key = "p",  action = "paste" },
+								-- { key = "i", action = "run_custom_command", action_cb = run_custom_command },
+								-- { key = "ga", action = "git_add", action_cb = git_add },
 							},
 						},
 						float = {

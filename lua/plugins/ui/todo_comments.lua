@@ -66,6 +66,13 @@ return require("utils.pluginConfig").NewConfig({
 						-- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
 					},
 				})
+				vim.api.nvim_set_keymap(
+					"",
+					"<leader>tt",
+					"<cmd>TodoTelescope keywords=TODO,FIX,FIXME,BUG,FIXIT,ISSUE,todo!<cr>",
+					{}
+				)
+				vim.api.nvim_set_keymap("", "<leader>tn", "<cmd>TodoTelescope<cr>", {})
 			end,
 		})
 	end,
