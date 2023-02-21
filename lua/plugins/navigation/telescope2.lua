@@ -35,11 +35,7 @@ return require("utils.pluginConfig").NewConfig({
 						},
 						diagnostics = { theme = "dropdown" },
 					},
-					extensions = {
-						workspaces = {
-							keep_insert = false,
-						},
-					},
+					extensions = {},
 					file_ignore_patterns = { "node_modules", ".cargo" },
 				})
 
