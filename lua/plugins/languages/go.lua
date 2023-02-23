@@ -12,6 +12,9 @@ return require("utils.pluginConfig").NewConfig({
 	end,
 	setup = function()
 		require("go").setup({
+			goimport = "goimports",
+			gofmt = "gofumpt",
+			lsp_gofumpt = true,
 			lsp_inlay_hints = {
 				enable = false,
 			},

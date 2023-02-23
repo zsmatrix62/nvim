@@ -1,6 +1,5 @@
 return {
-	require = function(_)
-	end,
+	require = function(_) end,
 	-- 定义关闭其他buffer的函数
 	close_other_buffers = function()
 		local current_buf = vim.api.nvim_get_current_buf()
@@ -22,7 +21,6 @@ return {
 		end)
 	end,
 	setup = function()
-		vim.keymap.set("n", "<leader>act", ":TermExec cmd='aicommits'<cr>")
 		vim.api.nvim_set_keymap(
 			"n",
 			"<leader>co",
@@ -30,7 +28,7 @@ return {
 			{ noremap = true, silent = false }
 		)
 		vim.api.nvim_set_keymap(
-			"n",
+			"i",
 			"<leader>it",
 			":lua require('plugins.custom').insert_from_selection_list()<CR>",
 			{ noremap = true, silent = false }

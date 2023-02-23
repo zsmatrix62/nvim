@@ -50,6 +50,7 @@ function M.setup() -- auto install configurations
 			-- formatters
 			"clang-format",
 			"prettier",
+			"goimports",
 			"gofumpt",
 			"golines",
 			"rustfmt",
@@ -58,7 +59,7 @@ function M.setup() -- auto install configurations
 			"autopep8",
 			-- linters
 			"pylint",
-			-- "staticcheck",
+			"eslint_d",
 			"golangci-lint",
 		},
 		auto_update = false,
