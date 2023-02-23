@@ -7,6 +7,7 @@ local M = {
 		"tsserver",
 		"gopls",
 		"golangci_lint_ls",
+		"eslint",
 		"cmake",
 		"cssmodules_ls",
 		"dockerls",
@@ -63,7 +64,7 @@ function M.setup() -- auto install configurations
 			"autopep8",
 			-- linters
 			"pylint",
-			"eslint_d",
+			-- "eslint_d",
 			"golangci-lint", -- for golangci-lint-lsp NOTE: do not use in null-ls
 		},
 		auto_update = false,

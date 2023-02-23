@@ -8,6 +8,9 @@ return {
 				local null_ls = require("null-ls")
 				null_ls.setup({
 					sources = {
+						-- lints
+						null_ls.builtins.diagnostics.pylint,
+						-- null_ls.builtins.diagnostics.eslint_d,
 						-- formatters
 						null_ls.builtins.formatting.stylua,
 						null_ls.builtins.formatting.prettier,
@@ -21,9 +24,7 @@ return {
 						null_ls.builtins.formatting.taplo,
 						null_ls.builtins.formatting.rustfmt,
 						null_ls.builtins.formatting.swiftformat,
-						-- lints
-						null_ls.builtins.diagnostics.pylint,
-						null_ls.builtins.diagnostics.eslint_d,
+						-- null_ls.builtins.formatting.eslint_d,
 						-- null_ls.builtins.diagnostics.golangci_lint,
 					},
 					on_attach = function(client, bufnr)
