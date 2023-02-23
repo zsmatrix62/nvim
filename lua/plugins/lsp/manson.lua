@@ -1,5 +1,5 @@
--- NOTE: language server names can be found:
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint
+-- NOTE: language server names can be found: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint
+
 local M = {
 	ENSURE_INSTALLS = {
 		"rust_analyzer",
@@ -9,10 +9,8 @@ local M = {
 		"golangci_lint_ls",
 		"cmake",
 		"cssmodules_ls",
-		"stylelint_lsp",
 		"dockerls",
 		"docker_compose_language_service",
-		"eslint",
 		"marksman",
 		"svelte",
 		-- "clangd",
@@ -65,6 +63,7 @@ function M.setup() -- auto install configurations
 			"autopep8",
 			-- linters
 			"pylint",
+			"eslint_d",
 			"golangci-lint", -- for golangci-lint-lsp NOTE: do not use in null-ls
 		},
 		auto_update = false,

@@ -23,7 +23,7 @@ return {
 						null_ls.builtins.formatting.swiftformat,
 						-- lints
 						null_ls.builtins.diagnostics.pylint,
-						-- null_ls.builtins.diagnostics.eslint_d,
+						null_ls.builtins.diagnostics.eslint_d,
 						-- null_ls.builtins.diagnostics.golangci_lint,
 					},
 					on_attach = function(client, bufnr)
