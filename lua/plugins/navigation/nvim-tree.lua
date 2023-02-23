@@ -19,14 +19,14 @@ M.require = function(use)
 					mappings = {
 						custom_only = false,
 						list = {
-							{ key = "u",  action = "dir_up" },
+							{ key = "u", action = "dir_up" },
 							{ key = "tg", action = "toggle_git_clean" },
-							{ key = "v",  action = "vsplit" },
-							{ key = ".",  action = "cd" },
-							{ key = "d",  action = "trash" },
-							{ key = "D",  action = "trash" },
+							{ key = "v", action = "vsplit" },
+							{ key = ".", action = "cd" },
+							{ key = "d", action = "trash" },
+							{ key = "D", action = "trash" },
 							{ key = "yy", action = "copy" },
-							{ key = "p",  action = "paste" },
+							{ key = "p", action = "paste" },
 							{
 								key = "i",
 								action = "run_custom_command",
