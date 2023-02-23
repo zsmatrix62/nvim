@@ -1,3 +1,5 @@
+-- NOTE: language server names can be found:
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint
 local M = {
 	ENSURE_INSTALLS = {
 		"rust_analyzer",
