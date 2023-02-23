@@ -19,8 +19,8 @@ return {
 							{ cursor = "●", texthl = "SmoothCursorYellow" },
 							{ cursor = "●", texthl = "SmoothCursorGreen" },
 							{ cursor = "•", texthl = "SmoothCursorAqua" },
-							{ cursor = ".", texthl = "SmoothCursorBlue" },
-							{ cursor = ".", texthl = "SmoothCursorPurple" },
+							{ cursor = ".",   texthl = "SmoothCursorBlue" },
+							{ cursor = ".",   texthl = "SmoothCursorPurple" },
 						},
 						tail = { cursor = nil, texthl = "SmoothCursor" },
 					},
@@ -29,6 +29,7 @@ return {
 					texthl = "SmoothCursor", -- highlight group, default is { bg = nil, fg = "#FFD400" }
 					threshold = 3,
 					timeout = 3000,
+					disable_float_win = true, -- disable on float window
 				}
 				require("smoothcursor").setup(default)
 			end,

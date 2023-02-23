@@ -58,7 +58,8 @@ function M.setup() -- auto install configurations
 			"autopep8",
 			-- linters
 			"pylint",
-			"staticcheck",
+			-- "staticcheck",
+			"golangci-lint",
 		},
 		auto_update = false,
 		run_on_start = true,
