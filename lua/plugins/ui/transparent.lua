@@ -7,6 +7,10 @@ return {
 					enable = true,
 					extra_groups = {
 						"all",
+						"NvimTreeNormal",
+						"NvimTreeStatuslineNc",
+						"FidgetTask",
+						"FidgetTitle",
 					},
 					exclude = {},
 				})
