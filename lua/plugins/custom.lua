@@ -1,5 +1,6 @@
 return {
-	require = function(_) end,
+	require = function(_)
+	end,
 	-- 定义关闭其他buffer的函数
 	close_other_buffers = function()
 		local current_buf = vim.api.nvim_get_current_buf()
@@ -16,22 +17,24 @@ return {
 			prompt = "",
 		}, function(selected)
 			if selected ~= nil then
-				vim.api.nvim_feedkeys("i" .. selected .. ": ", "n", true)
+				vim.api.nvim_feedkeys(selected .. ": ", "n", true)
 			end
 		end)
 	end,
 	setup = function()
+		-- NOTE: close other buffers
 		vim.api.nvim_set_keymap(
 			"n",
 			"<leader>co",
 			":lua require('plugins.custom').close_other_buffers()<CR>",
-			{ noremap = true, silent = false }
+			{ noremap = true, silent = true }
 		)
+		--  NOTE: insert todo comments prefix labels
 		vim.api.nvim_set_keymap(
 			"i",
 			"<leader>it",
-			":lua require('plugins.custom').insert_from_selection_list()<CR>",
-			{ noremap = true, silent = false }
+			"<cmd>lua require('plugins.custom').insert_from_selection_list()<CR>",
+			{ noremap = true, silent = true }
 		)
 	end,
 }
