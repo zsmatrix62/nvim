@@ -132,7 +132,12 @@ return {
 					require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
 				end, { silent = true, noremap = true })
 
-				vim.keymap.set("n", [[<c-\>]], "<cmd>Lspsaga term_toggle<CR>", { silent = true, noremap = true })
+				vim.keymap.set(
+					{ "n", "t" },
+					[[<c-\>]],
+					"<cmd>Lspsaga term_toggle<CR>",
+					{ silent = true, noremap = true }
+				)
 			end,
 		})
 	end,
