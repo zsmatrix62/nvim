@@ -10,6 +10,7 @@ local M = {
 		"eslint",
 		"cmake",
 		"cssmodules_ls",
+		"stylelint_lsp",
 		"dockerls",
 		"docker_compose_language_service",
 		"marksman",
