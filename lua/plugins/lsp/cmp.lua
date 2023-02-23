@@ -141,6 +141,7 @@ function M.config_nvim_cmp_lsp()
 		}
 	end
 
+	-- NOTE: auto configure servers base don manson's ensure installs
 	for _, lsp in ipairs(manson.ENSURE_INSTALLS) do
 		local ok, optionModule = pcall(require, "plugins.lsp.lsp-setup-settings." .. lsp)
 		local setup_options = init_setup_options()
@@ -173,8 +174,8 @@ function M.config_nvim_cmp()
 	local select_pre_item = cmp.mapping(function(fallback)
 		if cmp.visible() then
 			cmp.select_prev_item()
-		elseif luasnip.jumpable( -1) then
-			luasnip.jump( -1)
+		elseif luasnip.jumpable(-1) then
+			luasnip.jump(-1)
 		else
 			fallback()
 		end
@@ -234,7 +235,7 @@ function M.config_nvim_cmp()
 		},
 		-- 快捷键
 		mapping = cmp.mapping.preset.insert({
-			["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs( -1), { "i", "c" }),
+			["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 			["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 			["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 			["<C-e>"] = cmp.mapping.abort(),
@@ -308,19 +309,19 @@ function M.config_nvim_cmp()
 					end
 
 					local menu = ({
-							nvim_lsp = "(LSP)",
-							emoji = "(Emoji)",
-							path = "(Path)",
-							calc = "(Calc)",
-							cmp_tabnine = "(Tabnine)",
-							vsnip = "(Snippet)",
-							luasnip = "(Snippet)",
-							buffer = "(Buffer)",
-							tmux = "(TMUX)",
-							copilot = "(Copilot)",
-							treesitter = "(TreeSitter)",
-							dictionary = "(Dictionary)",
-						})[entry.source.name]
+						nvim_lsp = "(LSP)",
+						emoji = "(Emoji)",
+						path = "(Path)",
+						calc = "(Calc)",
+						cmp_tabnine = "(Tabnine)",
+						vsnip = "(Snippet)",
+						luasnip = "(Snippet)",
+						buffer = "(Buffer)",
+						tmux = "(TMUX)",
+						copilot = "(Copilot)",
+						treesitter = "(TreeSitter)",
+						dictionary = "(Dictionary)",
+					})[entry.source.name]
 
 					if menu == "" then
 						menu = entry.source.name
@@ -341,11 +342,11 @@ function M.config_nvim_cmp()
 		sources = {
 			-- { name = "copilot", priority = 1000 },
 			{ name = "nvim_lsp", priority = 900 },
-			{ name = "calc",     priority = 900 },
-			{ name = "path",     priority = 900 },
-			{ name = "luasnip",  priority = 700 },
-			{ name = "buffer",   priority = 600 },
-			{ name = "crates",   priority = 100 },
+			{ name = "calc", priority = 900 },
+			{ name = "path", priority = 900 },
+			{ name = "luasnip", priority = 700 },
+			{ name = "buffer", priority = 600 },
+			{ name = "crates", priority = 100 },
 			-- { name = "treesitter", priority = 100 },
 			{
 				name = "dictionary",

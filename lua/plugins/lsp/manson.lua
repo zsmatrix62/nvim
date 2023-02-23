@@ -63,6 +63,7 @@ function M.setup() -- auto install configurations
 			"autopep8",
 			-- linters
 			"pylint",
+			"golangci-lint", -- for golangci-lint-lsp NOTE: do not use in null-ls
 		},
 		auto_update = false,
 		run_on_start = true,
