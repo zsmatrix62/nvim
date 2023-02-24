@@ -32,6 +32,8 @@ return {
 				)
 
 				require("neo-tree").setup({
+					-- log_level = "debug",
+					-- log_to_file = true,
 					event_handlers = {
 						{
 							event = "file_opened",

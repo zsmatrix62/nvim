@@ -40,6 +40,7 @@ local function packer_startup(use)
 		require("plugins.utils"),
 		require("plugins.neovide"),
 		require("plugins.custom"),
+		-- require("plugins.dap-debuggers"),
 	}
 	use("wbthomason/packer.nvim")
 
