@@ -12,6 +12,7 @@ local ms = {
 	require("plugins.editing.repeat"),
 	require("plugins.editing.ts-auto-tag"),
 	require("plugins.editing.swap"),
+	require("plugins.editing.context"),
 }
 
 return require("utils.pluginConfig").NewConfig({
