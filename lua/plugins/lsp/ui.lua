@@ -122,10 +122,10 @@ return {
 				vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<cr>", { silent = true, noremap = true })
 
 				-- jump diagnostic
-				vim.keymap.set("n", "bg", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true, noremap = true })
+				vim.keymap.set("n", "mg", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true, noremap = true })
 				vim.keymap.set("n", "ng", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true, noremap = true })
 				-- or jump to error
-				vim.keymap.set("n", "be", function()
+				vim.keymap.set("n", "me", function()
 					require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
 				end, { silent = true, noremap = true })
 				vim.keymap.set("n", "ne", function()

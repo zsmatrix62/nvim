@@ -21,7 +21,7 @@ local M = {
 		"angularls",
 		"lua_ls",
 		"jsonls",
-		"bufls",
+		-- "bufls",
 		"html",
 		-- "tailwindcss",
 	},
@@ -58,7 +58,7 @@ function M.setup() -- auto install configurations
 			"prettier",
 			"goimports",
 			"gofumpt",
-			"golines",
+			-- "golines",
 			"rustfmt",
 			"stylua",
 			"buf",
@@ -68,7 +68,7 @@ function M.setup() -- auto install configurations
 			-- "eslint_d",
 			"golangci-lint", -- for golangci-lint-lsp NOTE: do not use in null-ls
 		},
-		auto_update = false,
+		auto_update = true,
 		run_on_start = true,
 		start_delay = 3000, -- 3 second delay
 	})

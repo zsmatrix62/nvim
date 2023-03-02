@@ -13,7 +13,7 @@ return {
 					---LHS of toggle mappings in NORMAL mode
 					toggler = {
 						---Line-comment toggle keymap
-						-- line = "gcc",
+						line = "gcc",
 						-- ---Block-comment toggle keymap
 						block = "gbc",
 					},
@@ -31,7 +31,7 @@ return {
 						---Add comment on the line below
 						below = "gco",
 						---Add comment at the end of line
-						eol = "gcA",
+						eol = "gca",
 					},
 					---Enable keybindings
 					---NOTE: If given `false` then the plugin won't create any mappings
