@@ -19,7 +19,7 @@ return {
 						null_ls.builtins.formatting.gofmt,
 						null_ls.builtins.formatting.gofumpt,
 						null_ls.builtins.formatting.goimports,
-						null_ls.builtins.formatting.golines,
+						-- null_ls.builtins.formatting.golines,
 						null_ls.builtins.formatting.buf,
 						null_ls.builtins.formatting.taplo,
 						null_ls.builtins.formatting.rustfmt,
@@ -28,16 +28,16 @@ return {
 						-- null_ls.builtins.diagnostics.golangci_lint,
 					},
 					on_attach = function(client, bufnr)
-					if client.supports_method("textDocument/formatting") then
-						vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-						vim.api.nvim_create_autocmd("BufWritePre", {
-							group = augroup,
-							buffer = bufnr,
-							callback = function()
-								vim.lsp.buf.format({ bufnr = 0 })
-							end,
-						})
-					end
+						if client.supports_method("textDocument/formatting") then
+							vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+							vim.api.nvim_create_autocmd("BufWritePre", {
+								group = augroup,
+								buffer = bufnr,
+								callback = function()
+									vim.lsp.buf.format({ bufnr = 0 })
+								end,
+							})
+						end
 					end,
 				})
 				vim.api.nvim_set_keymap("n", "<leader>s", ":lua vim.lsp.buf.format()<cr>", { silent = true })

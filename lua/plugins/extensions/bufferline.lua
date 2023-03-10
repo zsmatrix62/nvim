@@ -38,9 +38,9 @@ function M.require(use)
 					max_prefix_length = 13,
 					tab_size = 20,
 					diagnostics = "nvim_lsp",
-					diagnostics_update_in_insert = false,
+					diagnostics_update_in_insert = true,
 					-- The diagnostics indicator can be set to nil to keep the buffer name highlight but delete the highlighting
-					diagnostics_indicator = function(count, level, diagnostics_dict, context)
+					diagnostics_indicator = function(count, _level, _diagnostics_dict, _context)
 						return "(" .. count .. ")"
 					end,
 					-- NOTE: this will be called a lot so don't do any heavy processing here

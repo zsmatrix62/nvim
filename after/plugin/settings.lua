@@ -8,8 +8,8 @@ vim.o.autoindent = true
 vim.o.wildmode = "list:full"
 vim.o.mouse = "a"
 vim.o.background = "dark"
--- vim.o.number = true
--- vim.o.relativenumber = true
+vim.o.number = true
+vim.o.relativenumber = true
 vim.opt.ignorecase = true
 vim.opt.iskeyword:append("-")
 
@@ -17,7 +17,8 @@ vim.api.nvim_command("set nohlsearch")
 vim.api.nvim_command("noswapfile")
 vim.api.nvim_command("set mouse-=a")
 
--- vim.api.nvim_command("set cursorline")
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "both"
 -- vim.api.nvim_command("set cursorcolumn")
 
 vim.api.nvim_command("set splitright")

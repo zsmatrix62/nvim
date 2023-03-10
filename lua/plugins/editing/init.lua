@@ -4,14 +4,13 @@ local ms = {
 	require("plugins.editing.treesitter"),
 	require("plugins.editing.neogen"),
 	require("plugins.editing.surround"),
-	-- require("plugins.editing.history"),
+	require("plugins.editing.history"),
 	require("plugins.editing.outline"),
 	require("plugins.editing.autopair"),
 	require("plugins.editing.colorizer"),
 	require("plugins.editing.comment"),
 	require("plugins.editing.repeat"),
 	require("plugins.editing.ts-auto-tag"),
-	require("plugins.editing.swap"),
 	require("plugins.editing.context"),
 }
 

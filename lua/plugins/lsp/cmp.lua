@@ -49,7 +49,7 @@ function M.require(use)
 		config = function()
 			require("cmp_dictionary").setup({
 				dic = {
-					["*"] = "~/.config/nvim/dicts/en.dict",
+						["*"] = "~/.config/nvim/dicts/en.dict",
 					spelllang = {
 						en = "~/.config/nvim/dicts/en.dict",
 					},
@@ -235,17 +235,17 @@ function M.config_nvim_cmp()
 		},
 		-- 快捷键
 		mapping = cmp.mapping.preset.insert({
-			["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-			["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-			["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-			["<C-e>"] = cmp.mapping.abort(),
+				["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+				["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+				["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+				["<C-e>"] = cmp.mapping.abort(),
 			-- ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-			["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-			["<c-o>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-			["<Tab>"] = select_next_item,
-			["<C-j>"] = select_next_item,
-			["<S-Tab>"] = select_pre_item,
-			["<C-k>"] = select_pre_item,
+				["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+				["<c-o>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+				["<Tab>"] = select_next_item,
+				["<C-j>"] = select_next_item,
+				["<S-Tab>"] = select_pre_item,
+				["<C-k>"] = select_pre_item,
 		}),
 		formatting = {
 			fields = { "kind", "abbr", "menu" },
@@ -290,7 +290,6 @@ function M.config_nvim_cmp()
 					Dictionary = "",
 					Calc = "",
 				},
-
 				before = function(entry, vim_item)
 					-- copilit kind is not in lspkind
 					-- manually set it
@@ -309,19 +308,17 @@ function M.config_nvim_cmp()
 					end
 
 					local menu = ({
-						nvim_lsp = "(LSP)",
-						emoji = "(Emoji)",
-						path = "(Path)",
-						calc = "(Calc)",
-						cmp_tabnine = "(Tabnine)",
-						vsnip = "(Snippet)",
-						luasnip = "(Snippet)",
-						buffer = "(Buffer)",
-						tmux = "(TMUX)",
-						copilot = "(Copilot)",
-						treesitter = "(TreeSitter)",
-						dictionary = "(Dictionary)",
-					})[entry.source.name]
+							nvim_lsp = "LSP",
+							emoji = "Emoji",
+							path = "Path",
+							calc = "Calc",
+							vsnip = "Snippet",
+							luasnip = "Snippet",
+							buffer = "Buffer",
+							copilot = "Copilot",
+							treesitter = "TreeSitter",
+							dictionary = "Dictionary",
+						})[entry.source.name]
 
 					if menu == "" then
 						menu = entry.source.name
@@ -342,11 +339,11 @@ function M.config_nvim_cmp()
 		sources = {
 			-- { name = "copilot", priority = 1000 },
 			{ name = "nvim_lsp", priority = 900 },
-			{ name = "calc", priority = 900 },
-			{ name = "path", priority = 900 },
-			{ name = "luasnip", priority = 700 },
-			{ name = "buffer", priority = 600 },
-			{ name = "crates", priority = 100 },
+			{ name = "calc",     priority = 900 },
+			{ name = "path",     priority = 900 },
+			{ name = "luasnip",  priority = 700 },
+			{ name = "buffer",   priority = 600 },
+			{ name = "crates",   priority = 100 },
 			-- { name = "treesitter", priority = 100 },
 			{
 				name = "dictionary",
