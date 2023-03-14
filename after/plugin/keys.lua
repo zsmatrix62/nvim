@@ -56,6 +56,9 @@ keymap("n", "ccd", ":cd %:p:h<cr>", { silent = false })
 -- remove mapping of "Q" key
 keymap("", "q", "<Nop>", { silent = true })
 
+-- no highlight
+keymap("", "nol", "<cmd>nohl<cr>", { silent = true })
+
 -- -- Custom vim functions
 -- local vimp = require("vimp")
 -- -- Toggle

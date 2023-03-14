@@ -1,5 +1,5 @@
 local ms = {
-	-- require("plugins.navigation.easymotion"),
+	require("plugins.navigation.easymotion"),
 	require("plugins.navigation.hop"),
 	require("plugins.navigation.telescope2"),
 	require("plugins.navigation.neotree"),
