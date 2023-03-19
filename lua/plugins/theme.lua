@@ -3,12 +3,12 @@ return {
 		-- require termguicolors
 		vim.opt.termguicolors = true
 
-		use({
-			"folke/tokyonight.nvim",
-			config = function()
-				vim.cmd([[colorscheme tokyonight]])
-			end,
-		})
+		-- use({
+		-- 	"folke/tokyonight.nvim",
+		-- 	config = function()
+		-- 		vim.cmd([[colorscheme tokyonight]])
+		-- 	end,
+		-- })
 
 		-- use({
 		-- 	"LunarVim/lunar.nvim",
@@ -25,12 +25,12 @@ return {
 		-- 	end,
 		-- })
 
-		-- use({
-		-- 	"JoosepAlviste/palenightfall.nvim",
-		-- 	config = function()
-		-- 		vim.cmd([[colorscheme palenightfall]])
-		-- 	end,
-		-- })
+		use({
+			"JoosepAlviste/palenightfall.nvim",
+			config = function()
+				vim.cmd([[colorscheme palenightfall]])
+			end,
+		})
 
 		-- use({ "rose-pine/neovim" })
 		-- use({ "rockyzhang24/arctic.nvim", requires = { "rktjmp/lush.nvim" } })
@@ -68,5 +68,6 @@ return {
 		-- 	end,
 		-- })
 	end,
-	setup = function() end,
+	setup = function()
+	end,
 }

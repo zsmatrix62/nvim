@@ -6,22 +6,22 @@ local M = {
 		"pyright",
 		"tsserver",
 		"gopls",
-		"golangci_lint_ls",
+		-- "golangci_lint_ls",
 		"eslint",
-		"cmake",
+		-- "cmake",
 		"cssmodules_ls",
 		"stylelint_lsp",
 		"dockerls",
 		"docker_compose_language_service",
-		"marksman",
-		"svelte",
+		-- "marksman",
+		-- "svelte",
 		-- "clangd",
 		"cssls",
 		"taplo",
 		"angularls",
 		"lua_ls",
 		"jsonls",
-		-- "bufls",
+		"bufls",
 		"html",
 		-- "tailwindcss",
 	},
@@ -54,7 +54,7 @@ function M.setup() -- auto install configurations
 	require("mason-tool-installer").setup({
 		ensure_installed = {
 			-- formatters
-			"clang-format",
+			-- "clang-format",
 			"prettier",
 			"goimports",
 			"gofumpt",
@@ -66,7 +66,8 @@ function M.setup() -- auto install configurations
 			-- linters
 			"pylint",
 			-- "eslint_d",
-			"golangci-lint", -- for golangci-lint-lsp NOTE: do not use in null-ls
+			"staticcheck",
+			"golangci-lint", -- for golangci-lint-lsp
 		},
 		auto_update = true,
 		run_on_start = true,

@@ -3,7 +3,7 @@ local ms = {
 	require("plugins.editing.formatters"),
 	require("plugins.editing.treesitter"),
 	require("plugins.editing.neogen"),
-	require("plugins.editing.surround"),
+	-- require("plugins.editing.surround"),
 	require("plugins.editing.history"),
 	require("plugins.editing.outline"),
 	require("plugins.editing.autopair"),

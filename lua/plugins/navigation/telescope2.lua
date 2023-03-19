@@ -8,13 +8,13 @@ return require("utils.pluginConfig").NewConfig({
 				local close_action = actions.close
 				local mappings = {
 					i = {
-						["<esc>"] = close_action,
-						["<CR>"] = actions.select_default + actions.center,
+							["<esc>"] = close_action,
+							["<CR>"] = actions.select_default + actions.center,
 					},
 					n = {
-						["q"] = close_action,
-						["<esc>"] = close_action,
-						["<CR>"] = actions.select_default + actions.center,
+							["q"] = close_action,
+							["<esc>"] = close_action,
+							["<CR>"] = actions.select_default + actions.center,
 					},
 				}
 
@@ -24,7 +24,7 @@ return require("utils.pluginConfig").NewConfig({
 					defaults = {
 						mappings = mappings,
 						layout_config = {
-							horizontal = { width = 0.9 },
+							width = 0.9,
 						},
 					},
 					pickers = {
@@ -46,6 +46,7 @@ return require("utils.pluginConfig").NewConfig({
 					},
 					file_ignore_patterns = { "node_modules", ".cargo" },
 				})
+
 				require("telescope").load_extension("fzf")
 
 				-- telescope mappings

@@ -30,7 +30,7 @@ return {
 					ignore_install = {},
 					highlight = {
 						enable = true,
-						disable = {},
+						ft_blocklist = {},
 						additional_vim_regex_highlighting = { "markdown" },
 					},
 					keymaps = {

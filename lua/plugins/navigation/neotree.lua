@@ -19,15 +19,15 @@ return {
 
 				vim.api.nvim_set_keymap(
 					"",
-					"<space>r",
-					":Neotree source=buffers reveal=true position=float toggle=true<cr>",
+					"<space>g",
+					":Neotree source=git_status reveal=true position=float toggle=true<cr>",
 					{ silent = true }
 				)
 
 				vim.api.nvim_set_keymap(
 					"",
-					"<space>g",
-					":Neotree source=git_status reveal=true position=float toggle=true<cr>",
+					"<space>r",
+					":Neotree source=buffers reveal=true position=float toggle=true<cr>",
 					{ silent = true }
 				)
 

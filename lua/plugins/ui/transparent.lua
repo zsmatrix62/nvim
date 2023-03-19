@@ -4,7 +4,6 @@ return {
 			"xiyaowong/nvim-transparent",
 			config = function()
 				require("transparent").setup({
-					enable = true,
 					extra_groups = {
 						"all",
 						"NvimTreeNormal",
@@ -16,7 +15,6 @@ return {
 						"FidgetTask",
 						"FidgetTitle",
 					},
-					exclude = {},
 				})
 			end,
 		})

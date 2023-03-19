@@ -25,7 +25,8 @@ return {
 						null_ls.builtins.formatting.rustfmt,
 						null_ls.builtins.formatting.swiftformat,
 						-- null_ls.builtins.formatting.eslint_d,
-						-- null_ls.builtins.diagnostics.golangci_lint,
+						null_ls.builtins.diagnostics.golangci_lint,
+						null_ls.builtins.diagnostics.staticcheck,
 					},
 					on_attach = function(client, bufnr)
 						if client.supports_method("textDocument/formatting") then

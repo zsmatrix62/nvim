@@ -32,6 +32,7 @@ local function packer_startup(use)
 		require("plugins.extensions.bufferline"),
 		require("plugins.ui"),
 		require("plugins.languages"),
+		require("plugins.neodev"),
 		require("plugins.editing"),
 		require("plugins.navigation"),
 		require("plugins.git"),
