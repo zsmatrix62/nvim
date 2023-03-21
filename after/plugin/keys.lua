@@ -10,10 +10,10 @@ keymap("i", "jj", "<Esc>", keymapopts)
 
 keymap("i", "ji", "<Esc>A;<esc>", keymapopts)
 
-keymap("n", "ls", "<cmd>LspRestart<cr>", keymapopts)
-
 -- quick save
 keymap("n", "mm", ":wa<cr>", { silent = true, noremap = true })
+keymap("n", "<space>s", ":wa<cr>", { silent = true, noremap = true })
+
 -- save and add git
 keymap("n", "ga", ":silent! w | Git add % <cr>", { silent = true, noremap = true })
 

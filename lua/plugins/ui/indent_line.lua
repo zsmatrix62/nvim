@@ -8,9 +8,9 @@ return require("utils.pluginConfig").NewConfig({
 				vim.opt.list = true
 				require("indent_blankline").setup({
 					show_current_context = true,
-					show_current_context_start = true,
+					--[[ show_current_context_start = true, ]]
 					space_char_blankline = " ",
-					char = "┊",
+					char = " ",
 					space_char = " ",
 					-- show_first_indent_level = true,
 					-- char_highlight_list = {
@@ -26,5 +26,6 @@ return require("utils.pluginConfig").NewConfig({
 			end,
 		})
 	end,
-	setup = function() end,
+	setup = function()
+	end,
 })

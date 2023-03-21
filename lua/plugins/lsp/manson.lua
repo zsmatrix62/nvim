@@ -56,6 +56,7 @@ function M.setup() -- auto install configurations
 			-- formatters
 			-- "clang-format",
 			"prettier",
+			-- "prettierd",
 			"goimports",
 			"gofumpt",
 			-- "golines",
