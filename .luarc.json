@@ -2,7 +2,8 @@
     "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
     "Lua.diagnostics.globals": [
         "vim",
-        "exepath"
+        "exepath",
+        "lfs"
     ],
     "workspace.library": [
         "/Users/kylehuang/.local/share/nvim/site/pack/packer/start/neodev.nvim/types/nightly",
@@ -68,6 +69,8 @@
         "/Users/kylehuang/.local/share/nvim/site/pack/packer/start/tidy.nvim/lua",
         "/Users/kylehuang/.local/share/nvim/site/pack/packer/start/trim.nvim/lua",
         "/Users/kylehuang/.config/nvim/lua",
-        "${3rd}/luv/library"
-    ]
+        "${3rd}/luv/library",
+        "${3rd}/lfs/library"
+    ],
+    "workspace.checkThirdParty": false
 }

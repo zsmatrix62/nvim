@@ -1,5 +1,10 @@
 return {
-require = function(use)
-		use({ "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end, })
-end
+	require = function(use)
+		use({
+			"iamcco/markdown-preview.nvim",
+			run = function()
+				vim.fn["mkdp#util#install"]()
+			end,
+		})
+	end,
 }

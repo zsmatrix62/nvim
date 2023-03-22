@@ -14,9 +14,6 @@ keymap("i", "ji", "<Esc>A;<esc>", keymapopts)
 keymap("n", "mm", ":wa<cr>", { silent = true, noremap = true })
 keymap("n", "<space>s", ":wa<cr>", { silent = true, noremap = true })
 
--- save and add git
-keymap("n", "ga", ":silent! w | Git add % <cr>", { silent = true, noremap = true })
-
 -- map line start and end
 keymap("n", "H", "^", { silent = true, noremap = false })
 keymap("n", "L", "$", { silent = true, noremap = false })

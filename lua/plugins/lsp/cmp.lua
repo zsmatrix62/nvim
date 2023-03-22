@@ -18,15 +18,15 @@ function M.require(use)
 
 	-- cmp sources
 	-- use({ "ray-x/cmp-treesitter", after = "nvim-cmp" })
-	use({
-		"saecki/crates.nvim",
-		after = "nvim-cmp",
-		tag = "v0.2.1",
-		requires = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("crates").setup()
-		end,
-	})
+	-- use({
+	-- 	"saecki/crates.nvim",
+	-- 	after = "nvim-cmp",
+	-- 	tag = "v0.2.1",
+	-- 	requires = { "nvim-lua/plenary.nvim" },
+	-- 	config = function()
+	-- 		require("crates").setup()
+	-- 	end,
+	-- })
 	use({
 		"saadparwaiz1/cmp_luasnip",
 		after = "nvim-cmp",
@@ -41,18 +41,18 @@ function M.require(use)
 	})
 	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
-	use({ "hrsh7th/cmp-calc", after = "nvim-cmp" })
+	-- use({ "hrsh7th/cmp-calc", after = "nvim-cmp" })
 	use({ "amarakon/nvim-cmp-buffer-lines", after = "nvim-cmp" })
 	use({
 		"uga-rosa/cmp-dictionary",
 		after = "nvim-cmp",
 		config = function()
-			require("cmp_dictionary").setup({
-				dic = {
-					["*"] = "~/.config/nvim/dicts/en.dict",
-					spelllang = {
-						en = "~/.config/nvim/dicts/en.dict",
-					},
+			local dict = require("cmp_dictionary")
+			dict.setup({})
+			dict.switcher({
+				["*"] = "~/.config/nvim/dicts/en.dict",
+				spelllang = {
+					en = "~/.config/nvim/dicts/en.dict",
 				},
 			})
 		end,
@@ -133,6 +133,7 @@ function M.config_nvim_cmp_lsp()
 	local function init_setup_options()
 		local capabilities = require("cmp_nvim_lsp").default_capabilities(
 			vim.lsp.protocol.make_client_capabilities(),
+			---@diagnostic disable-next-line: redundant-parameter
 			{ snippetSupport = true }
 		)
 		return {
@@ -339,11 +340,11 @@ function M.config_nvim_cmp()
 		sources = {
 			-- { name = "copilot", priority = 1000 },
 			{ name = "nvim_lsp", priority = 900 },
-			{ name = "calc",     priority = 900 },
-			{ name = "path",     priority = 900 },
-			{ name = "luasnip",  priority = 700 },
-			{ name = "buffer",   priority = 600 },
-			{ name = "crates",   priority = 100 },
+			{ name = "calc", priority = 900 },
+			{ name = "path", priority = 900 },
+			{ name = "luasnip", priority = 700 },
+			{ name = "buffer", priority = 600 },
+			{ name = "crates", priority = 100 },
 			-- { name = "treesitter", priority = 100 },
 			{
 				name = "dictionary",
