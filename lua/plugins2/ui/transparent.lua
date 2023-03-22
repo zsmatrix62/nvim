@@ -1,6 +1,6 @@
 return {
 	"xiyaowong/nvim-transparent",
-	event = "BufEnter",
+	event = "VimEnter",
 	config = function()
 		require("transparent").setup({
 			extra_groups = {

@@ -2,6 +2,7 @@ return {
 	{
 		"williamboman/mason.nvim",
 		priority = 999,
+		event = "BufRead",
 		config = function()
 			require("mason").setup({
 				ui = {
@@ -16,6 +17,7 @@ return {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
+		event = "BufRead",
 		config = function()
 			require("mason-lspconfig").setup({
 				automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
@@ -25,6 +27,7 @@ return {
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		event = "BufRead",
 		config = function()
 			require("mason-tool-installer").setup({
 				ensure_installed = require("plugins2.lsp.manson.ensure_installs").tools,

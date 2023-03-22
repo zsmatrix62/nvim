@@ -44,7 +44,7 @@ vim.api.nvim_exec(
 set scrolloff=5
 augroup VCenterCursor
   au!
-  au BufEnter,WinEnter,WinNew,VimResized *,*.*
+  au BufRead,WinEnter,WinNew,VimResized *,*.*
         \ let &scrolloff=winheight(win_getid())/4
 augroup END
 ]],

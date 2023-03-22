@@ -1,5 +1,6 @@
 return {
 	"lvimuser/lsp-inlayhints.nvim",
+	event = "BufRead",
 	config = function()
 		local status_ok, inlayhints = pcall(require, "lsp-inlayhints")
 		if not status_ok then

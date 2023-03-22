@@ -1,6 +1,4 @@
 return {
-
-
 	{
 		"ray-x/go.nvim",
 		ft = "go",
@@ -20,7 +18,7 @@ return {
 				[[<cmd>lua require'telescope'.extensions.goimpl.goimpl{}<CR>]],
 				{ noremap = true, silent = true }
 			)
-		end
+		end,
 	},
 	{
 		"edolphin-ydf/goimpl.nvim",
@@ -30,5 +28,5 @@ return {
 			{ "nvim-treesitter/nvim-treesitter" },
 		},
 		ft = "go",
-	}
+	},
 }

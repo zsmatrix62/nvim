@@ -5,5 +5,6 @@ return {
 	require("plugins2.ui.transparent"),
 	require("plugins2.ui.bufferline"),
 	require("plugins2.ui.cursorword"),
+	require("plugins2.ui.startify"),
 	{ "nvim-tree/nvim-web-devicons" },
 }

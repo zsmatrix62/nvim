@@ -240,19 +240,19 @@ return {
 			"rafamadriz/friendly-snippets",
 			"onsails/lspkind-nvim",
 		},
-		event = "BufEnter",
+		event = "BufRead",
 	},
 	{
 		"hrsh7th/cmp-nvim-lsp",
 		dependencies = {
 			"neovim/nvim-lspconfig",
 		},
-		event = "BufEnter",
+		event = "BufRead",
 		config = M.config_nvim_cmp_lsp,
 	},
 	{
 		"saadparwaiz1/cmp_luasnip",
-		event = "BufEnter",
+		event = "BufRead",
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load({
 				paths = {
@@ -263,13 +263,11 @@ return {
 		end,
 	},
 
-	{ "hrsh7th/cmp-buffer", event = "BufEnter" },
-	{ "hrsh7th/cmp-path", event = "BufEnter" },
-	-- use({ "hrsh7th/cmp-calc", after = "nvim-cmp" })
-	{ "amarakon/nvim-cmp-buffer-lines" },
+	{ "hrsh7th/cmp-buffer", event = "BufRead" },
+	{ "hrsh7th/cmp-path", event = "BufRead" },
 	{
 		"uga-rosa/cmp-dictionary",
-		event = "BufEnter",
+		event = "BufRead",
 		config = function()
 			local dict = require("cmp_dictionary")
 			dict.setup({})
@@ -285,7 +283,7 @@ return {
 	-- lsp interface and support
 	{
 		"ray-x/lsp_signature.nvim",
-		event = "BufEnter",
+		event = "BufRead",
 		config = function()
 			local cfg = {
 				debug = false,

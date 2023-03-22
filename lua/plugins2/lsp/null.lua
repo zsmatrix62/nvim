@@ -14,6 +14,7 @@ end
 return {
 	{
 		"jose-elias-alvarez/null-ls.nvim",
+		event = "BufRead",
 		config = function()
 			local null_ls = require("null-ls")
 			null_ls.setup({
@@ -63,5 +64,5 @@ return {
 			vim.api.nvim_set_keymap("n", "<leader>s", ":lua vim.lsp.buf.format()<cr>", { silent = false })
 			vim.api.nvim_set_keymap("v", "<leader>s", ":lua vim.lsp.buf.format()<cr>", { silent = false })
 		end,
-	}
+	},
 }

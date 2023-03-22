@@ -1,6 +1,6 @@
 return {
 	"itchyny/vim-cursorword",
-	event = { "BufEnter", "BufNewFile" },
+	event = { "BufRead", "BufNewFile" },
 	config = function()
 		vim.api.nvim_command("augroup user_plugin_cursorword")
 		vim.api.nvim_command("autocmd!")
