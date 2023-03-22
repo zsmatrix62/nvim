@@ -24,8 +24,8 @@ vim.opt.cursorlineopt = "both"
 vim.api.nvim_command("set splitright")
 vim.api.nvim_command("set splitbelow")
 
-vim.api.nvim_command("set fileformat=unix")
-vim.api.nvim_command("set fileformats=unix")
+-- vim.api.nvim_command("set fileformat=unix")
+-- vim.api.nvim_command("set fileformats=unix")
 
 -- neovim configs
 -- vim.lsp.log_levels = "DEBUG"
