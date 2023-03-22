@@ -1,7 +1,7 @@
-
 return {
 	{
 		"williamboman/mason.nvim",
+		priority = 999,
 		config = function()
 			require("mason").setup({
 				ui = {
@@ -12,44 +12,26 @@ return {
 					},
 				},
 			})
-		end
+		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
 				automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-				ensure_installed = require("plugins2.lsp.manson.ensure_installs"),
+				ensure_installed = require("plugins2.lsp.manson.ensure_installs").servers,
 			})
-		end
+		end,
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		config = function()
 			require("mason-tool-installer").setup({
-				ensure_installed = {
-					-- formatters
-					-- "clang-format",
-					"prettier",
-					-- "prettierd",
-					"goimports",
-					"gofumpt",
-					-- "golines",
-					"rustfmt",
-					"stylua",
-					"buf",
-					"autopep8",
-					-- linters
-					"pylint",
-					-- "eslint_d",
-					"staticcheck",
-					"golangci-lint", -- for golangci-lint-lsp
-				},
+				ensure_installed = require("plugins2.lsp.manson.ensure_installs").tools,
 				auto_update = true,
 				run_on_start = true,
 				start_delay = 3000, -- 3 second delay
 			})
-		end
+		end,
 	},
-
 }

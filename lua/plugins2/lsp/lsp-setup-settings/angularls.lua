@@ -6,7 +6,7 @@ function M.config(setup_options)
 	setup_options.before_init = function(_, config)
 		setup_options.before_init(_, config)
 	end
-	setup_options.root_dir = util.root_pattern("angular.json", "project.json")
+	setup_options.root_dir = util.root_pattern("angular.json", "project.json", "package.json")
 	return setup_options
 end
 

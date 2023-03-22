@@ -1,5 +1,6 @@
 return {
 	"xiyaowong/nvim-transparent",
+	event = "BufEnter",
 	config = function()
 		require("transparent").setup({
 			extra_groups = {
@@ -14,5 +15,6 @@ return {
 				"FidgetTitle",
 			},
 		})
+		vim.api.nvim_exec(":TransparentEnable", false)
 	end,
 }

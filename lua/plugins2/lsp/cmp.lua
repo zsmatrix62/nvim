@@ -1,6 +1,5 @@
 local M = {}
 
-
 function M.config_nvim_cmp_lsp()
 	-- setup cmp lang config
 	local lspConfig = require("lspconfig")
@@ -18,7 +17,7 @@ function M.config_nvim_cmp_lsp()
 	end
 
 	-- NOTE: auto configure servers base don manson's ensure installs
-	for _, lsp in ipairs(require("plugins2.lsp.manson.ensure_installs")) do
+	for _, lsp in ipairs(require("plugins2.lsp.manson.ensure_installs").servers) do
 		local ok, optionModule = pcall(require, "plugins2.lsp.lsp-setup-settings." .. lsp)
 		local setup_options = init_setup_options()
 		if ok then
@@ -215,11 +214,11 @@ function M.config_nvim_cmp()
 		sources = {
 			-- { name = "copilot", priority = 1000 },
 			{ name = "nvim_lsp", priority = 900 },
-			{ name = "calc",     priority = 900 },
-			{ name = "path",     priority = 900 },
-			{ name = "luasnip",  priority = 700 },
-			{ name = "buffer",   priority = 600 },
-			{ name = "crates",   priority = 100 },
+			{ name = "calc", priority = 900 },
+			{ name = "path", priority = 900 },
+			{ name = "luasnip", priority = 700 },
+			{ name = "buffer", priority = 600 },
+			{ name = "crates", priority = 100 },
 			-- { name = "treesitter", priority = 100 },
 			{
 				name = "dictionary",
@@ -240,16 +239,20 @@ return {
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
 			"onsails/lspkind-nvim",
-			"neovim/nvim-lspconfig",
-			{
-				"hrsh7th/cmp-nvim-lsp",
-				config = M.config_nvim_cmp_lsp,
-			},
 		},
+		event = "BufEnter",
 	},
-
+	{
+		"hrsh7th/cmp-nvim-lsp",
+		dependencies = {
+			"neovim/nvim-lspconfig",
+		},
+		event = "BufEnter",
+		config = M.config_nvim_cmp_lsp,
+	},
 	{
 		"saadparwaiz1/cmp_luasnip",
+		event = "BufEnter",
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load({
 				paths = {
@@ -260,12 +263,13 @@ return {
 		end,
 	},
 
-	{ "hrsh7th/cmp-buffer", },
-	{ "hrsh7th/cmp-path", },
+	{ "hrsh7th/cmp-buffer", event = "BufEnter" },
+	{ "hrsh7th/cmp-path", event = "BufEnter" },
 	-- use({ "hrsh7th/cmp-calc", after = "nvim-cmp" })
-	{ "amarakon/nvim-cmp-buffer-lines", },
+	{ "amarakon/nvim-cmp-buffer-lines" },
 	{
 		"uga-rosa/cmp-dictionary",
+		event = "BufEnter",
 		config = function()
 			local dict = require("cmp_dictionary")
 			dict.setup({})
@@ -281,6 +285,7 @@ return {
 	-- lsp interface and support
 	{
 		"ray-x/lsp_signature.nvim",
+		event = "BufEnter",
 		config = function()
 			local cfg = {
 				debug = false,
