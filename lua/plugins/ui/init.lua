@@ -1,12 +1,7 @@
 local modules = {
-	-- require("plugins.ui.feline"),
-	-- require("plugins.ui.fidget"),
-	-- require("plugins.ui.rainbow"),
+	require("plugins.ui.feline"),
 	require("plugins.ui.todo_comments"),
-	-- require("plugins.ui.indent_line"),
-	-- require("plugins.ui.cursorline"),
-	-- require("plugins.ui.smoothcursor"),
-	-- require("plugins.ui.windowpicker"),
+	require("plugins.ui.windowpicker"),
 	require("plugins.ui.transparent"),
 }
 
