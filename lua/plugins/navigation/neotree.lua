@@ -7,7 +7,7 @@ return {
 			requires = {
 				"nvim-lua/plenary.nvim",
 				"MunifTanjim/nui.nvim",
-				-- "s1n7ax/nvim-window-picker",
+				"s1n7ax/nvim-window-picker",
 			},
 			config = function()
 				vim.api.nvim_set_keymap(
