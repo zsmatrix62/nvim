@@ -4,7 +4,7 @@ return {
 		"pyright",
 		"tsserver",
 		"gopls",
-		-- "golangci_lint_ls",
+		"golangci_lint_ls",
 		"eslint",
 		-- "cmake",
 		"cssmodules_ls",

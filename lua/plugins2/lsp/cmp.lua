@@ -110,13 +110,18 @@ function M.config_nvim_cmp()
 		},
 		-- 快捷键
 		mapping = cmp.mapping.preset.insert({
+			-- scroll docs
 			["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 			["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 			["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 			["<C-e>"] = cmp.mapping.abort(),
-			-- ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+
+			-- accept suggestions
 			["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
 			["<c-o>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+			["<c-k>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+
+			-- navigate suggestions
 			["<Tab>"] = select_next_item,
 			["<C-j>"] = select_next_item,
 			["<S-Tab>"] = select_pre_item,
@@ -212,7 +217,7 @@ function M.config_nvim_cmp()
 		-- 	ghost_text = true,
 		-- },
 		sources = {
-			-- { name = "copilot", priority = 1000 },
+			{ name = "copilot", priority = 1000 },
 			{ name = "nvim_lsp", priority = 900 },
 			{ name = "calc", priority = 900 },
 			{ name = "path", priority = 900 },
@@ -277,6 +282,27 @@ return {
 					en = "~/.config/nvim/dicts/en.dict",
 				},
 			})
+		end,
+	},
+
+	{
+		"zbirenbaum/copilot.lua",
+		priority = 60,
+		event = "BufRead",
+		config = function()
+			require("copilot").setup({
+				suggestion = { enabled = false },
+				panel = { enabled = false },
+			})
+		end,
+	},
+
+	{
+		"zbirenbaum/copilot-cmp",
+		priority = 59,
+		event = "BufRead",
+		config = function()
+			require("copilot_cmp").setup()
 		end,
 	},
 

@@ -1,6 +1,7 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	dependencies = { "nvim-lua/plenary.nvim", { "nvim-telescope/telescope-fzf-native.nvim", build = "make" } },
+	event = "VimEnter",
 	config = function()
 		local actions = require("telescope.actions")
 		local close_action = actions.close
@@ -35,7 +36,7 @@ return {
 			},
 			extensions = {
 				fzf = {
-					fuzzy = true,      -- false will only do exact matching
+					fuzzy = true, -- false will only do exact matching
 					override_generic_sorter = true, -- override the generic sorter
 					override_file_sorter = true, -- override the file sorter
 					case_mode = "ignore_case", -- or "ignore_case" or "respect_case"
@@ -53,5 +54,5 @@ return {
 		vim.api.nvim_set_keymap("n", "<space>4", ":Telescope fd<cr>", { silent = true })
 		vim.api.nvim_set_keymap("n", "<leader>gib", ":Telescope git_branches<cr>", { silent = true })
 		-- vim.api.nvim_set_keymap("n", "/", ":Telescope current_buffer_fuzzy_find<cr>", { silent = true })
-	end
+	end,
 }

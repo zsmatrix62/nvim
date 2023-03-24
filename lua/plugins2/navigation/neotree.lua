@@ -11,21 +11,21 @@ return {
 		vim.api.nvim_set_keymap(
 			"",
 			"<space>e",
-			":Neotree source=filesystem reveal=true position=float toggle=true<cr>",
+			":Neotree source=filesystem reveal=true position=float toggle=true reveal_force_cwd=true<cr>",
 			{ silent = true }
 		)
 
 		vim.api.nvim_set_keymap(
 			"",
 			"<space>g",
-			":Neotree source=git_status reveal=true position=float toggle=true<cr>",
+			":Neotree source=git_status reveal=true position=float toggle=true reveal_force_cwd=true<cr>",
 			{ silent = true }
 		)
 
 		vim.api.nvim_set_keymap(
 			"",
 			"<space>r",
-			":Neotree source=buffers reveal=true position=float toggle=true<cr>",
+			":Neotree source=buffers reveal=true position=float toggle=true reveal_force_cwd=true<cr>",
 			{ silent = true }
 		)
 

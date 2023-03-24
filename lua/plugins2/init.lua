@@ -8,5 +8,5 @@ return {
 	require("plugins2.lsp"),
 
 	require("plugins2.theme"),
-	require("plugins2.neodev")
+	require("plugins2.neodev"),
 }
