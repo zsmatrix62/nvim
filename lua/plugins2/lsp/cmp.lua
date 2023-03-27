@@ -118,13 +118,11 @@ function M.config_nvim_cmp()
 
 			-- accept suggestions
 			["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-			["<c-o>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-			["<c-k>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
 
 			-- navigate suggestions
 			["<Tab>"] = select_next_item,
-			["<C-j>"] = select_next_item,
 			["<S-Tab>"] = select_pre_item,
+			["<C-j>"] = select_next_item,
 			["<C-k>"] = select_pre_item,
 		}),
 		formatting = {

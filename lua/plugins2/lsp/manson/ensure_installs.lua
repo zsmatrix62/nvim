@@ -1,9 +1,12 @@
+-- NOTE: language server names can be found: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+
 return {
 	servers = {
 		"rust_analyzer",
 		"pyright",
 		"tsserver",
 		"gopls",
+		"bashls",
 		"golangci_lint_ls",
 		"eslint",
 		-- "cmake",
