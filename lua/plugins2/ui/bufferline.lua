@@ -60,7 +60,7 @@ return {
 					end
 				end,
 				offsets = { { filetype = "NvimTree", text = "File Explorer", text_align = "left" } },
-				color_icons = true,  -- whether or not to add the filetype icon highlights
+				color_icons = true, -- whether or not to add the filetype icon highlights
 				show_buffer_icons = true, -- disable filetype icons for buffers
 				show_buffer_close_icons = true,
 				show_buffer_default_icon = true, -- whether or not an unrecognised filetype should show a default icon
@@ -76,8 +76,9 @@ return {
 			},
 		})
 
-		vim.api.nvim_set_keymap("", "0", "<cmd>bn<cr>", {})
-		vim.api.nvim_set_keymap("", "9", "<cmd>bp<cr>", {})
+		vim.api.nvim_set_keymap("", "9", "<cmd>BufferLineCyclePre<cr>", {})
+		vim.api.nvim_set_keymap("", "0", "<cmd>BufferLineCycleNext<cr>", {})
 		vim.api.nvim_set_keymap("", "<C-c>", "<cmd>bd<cr>", {})
-	end
+		vim.api.nvim_set_keymap("", "<leader>p", ":BufferLineTogglePin<cr>", {})
+	end,
 }

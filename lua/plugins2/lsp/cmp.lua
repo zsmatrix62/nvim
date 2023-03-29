@@ -2,8 +2,6 @@ local M = {}
 
 function M.config_nvim_cmp_lsp()
 	-- setup cmp lang config
-	local lspConfig = require("lspconfig")
-
 	local function init_setup_options()
 		local capabilities = require("cmp_nvim_lsp").default_capabilities(
 			vim.lsp.protocol.make_client_capabilities(),
@@ -17,6 +15,7 @@ function M.config_nvim_cmp_lsp()
 	end
 
 	-- NOTE: auto configure servers base don manson's ensure installs
+	local lspConfig = require("lspconfig")
 	for _, lsp in ipairs(require("plugins2.lsp.manson.ensure_installs").servers) do
 		local ok, optionModule = pcall(require, "plugins2.lsp.lsp-setup-settings." .. lsp)
 		local setup_options = init_setup_options()
@@ -238,20 +237,20 @@ return {
 		"hrsh7th/nvim-cmp",
 		config = M.config_nvim_cmp,
 		priority = 99,
+		event = "BufRead",
 		dependencies = {
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
 			"onsails/lspkind-nvim",
 		},
-		event = "BufRead",
 	},
 	{
 		"hrsh7th/cmp-nvim-lsp",
+		event = "BufRead",
+		priority = 1000, -- must be loaded before manson-lsp-config
 		dependencies = {
 			"neovim/nvim-lspconfig",
 		},
-		event = "BufRead",
-		config = M.config_nvim_cmp_lsp,
 	},
 	{
 		"saadparwaiz1/cmp_luasnip",
@@ -283,26 +282,26 @@ return {
 		end,
 	},
 
-	{
-		"zbirenbaum/copilot.lua",
-		priority = 60,
-		event = "BufRead",
-		config = function()
-			require("copilot").setup({
-				suggestion = { enabled = false },
-				panel = { enabled = false },
-			})
-		end,
-	},
-
-	{
-		"zbirenbaum/copilot-cmp",
-		priority = 59,
-		event = "BufRead",
-		config = function()
-			require("copilot_cmp").setup()
-		end,
-	},
+	-- {
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	priority = 60,
+	-- 	event = "BufRead",
+	-- 	config = function()
+	-- 		require("copilot").setup({
+	-- 			suggestion = { enabled = false },
+	-- 			panel = { enabled = false },
+	-- 		})
+	-- 	end,
+	-- },
+	--
+	-- {
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	priority = 59,
+	-- 	event = "BufRead",
+	-- 	config = function()
+	-- 		require("copilot_cmp").setup()
+	-- 	end,
+	-- },
 
 	-- lsp interface and support
 	{

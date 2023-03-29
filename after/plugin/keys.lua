@@ -9,6 +9,7 @@ local keymapopts = {
 keymap("i", "jj", "<Esc>", keymapopts)
 
 keymap("i", "ji", "<Esc>A;<esc>", keymapopts)
+keymap("n", "zz", "zt", keymapopts)
 
 -- quick save
 keymap("n", "mm", ":wa<cr>", { silent = true, noremap = true })

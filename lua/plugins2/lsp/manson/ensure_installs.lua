@@ -7,7 +7,7 @@ return {
 		"tsserver",
 		"gopls",
 		"bashls",
-		"golangci_lint_ls",
+		-- "golangci_lint_ls",
 		"eslint",
 		-- "cmake",
 		"cssmodules_ls",
@@ -42,6 +42,6 @@ return {
 		"pylint",
 		-- "eslint_d",
 		"staticcheck",
-		"golangci-lint", -- for golangci-lint-lsp
+		"golangci-lint",
 	},
 }
