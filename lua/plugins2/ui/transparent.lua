@@ -13,6 +13,19 @@ return {
 				"NeoTreeNormalNC",
 				"FidgetTask",
 				"FidgetTitle",
+				-- lsp saga hilight
+				"SagaBorder",
+				"ActionPreviewBorder",
+				"CodeActionBorder",
+				"FinderBorder",
+				"FinderPreviewBorder",
+				"DefinitionBorder",
+				"HoverBorder",
+				"RenameBorder",
+				"DiagnosticBorder",
+				"DiagnosticShowBorder",
+				"CallHierarchyBorder",
+				"TerminalBorder",
 			},
 		})
 		vim.api.nvim_exec(":TransparentEnable", false)
