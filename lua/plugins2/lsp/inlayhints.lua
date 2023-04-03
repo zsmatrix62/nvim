@@ -1,6 +1,7 @@
 return {
 	"lvimuser/lsp-inlayhints.nvim",
 	event = "BufRead",
+	enable = false,
 	config = function()
 		local status_ok, inlayhints = pcall(require, "lsp-inlayhints")
 		if not status_ok then
@@ -49,7 +50,7 @@ return {
 
 				local bufnr = args.buf
 				local client = vim.lsp.get_client_by_id(args.data.client_id)
-				inlayhints.on_attach(client, bufnr)
+				inlayhints.on_attach(client, bufnr, true)
 			end,
 		})
 	end,

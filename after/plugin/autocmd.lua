@@ -13,20 +13,12 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 	group = grp_remember_fold,
 })
 
-local grp_write_post = vim.api.nvim_create_augroup("write post", { clear = true })
+-- local grp_write_post = vim.api.nvim_create_augroup("write post", { clear = true })
 
--- auto compile packer after lua file written
-vim.api.nvim_create_autocmd("BufWritePost", {
-	pattern = { "*.lua" },
-	command = ":silent! PackerCompile",
-	group = grp_write_post,
-})
-
--- unset highlight
-vim.api.nvim_create_autocmd("BufWritePost", {
+-- unset highlight after cursor moved
+vim.api.nvim_create_autocmd("CursorMoved", {
 	pattern = { "*" },
 	command = ":set nohlsearch",
-	group = grp_write_post,
 })
 
 -- overwrite highlight colors for indent line

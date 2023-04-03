@@ -1,11 +1,14 @@
+local ensure_installs = require("plugins2.lsp.manson.ensure_installs")
+
 return {
 	"williamboman/mason-lspconfig.nvim",
 	event = "BufRead",
 	priority = 998,
 	config = function()
-		require("mason-lspconfig").setup({
+		local mansonLspConfig = require("mason-lspconfig")
+		mansonLspConfig.setup({
 			automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-			ensure_installed = require("plugins2.lsp.manson.ensure_installs").servers,
+			ensure_installed = ensure_installs.servers,
 		})
 
 		-- automatically setup lsp servers
@@ -27,6 +30,6 @@ return {
 			end,
 		}
 
-		require("mason-lspconfig").setup_handlers(masonhandlersOptions)
+		mansonLspConfig.setup_handlers(masonhandlersOptions)
 	end,
 }
