@@ -41,7 +41,7 @@ vim.api.nvim_exec([[ let g:python3_host_prog = "/usr/local/bin/python" ]], true)
 --  Default scroll off
 vim.api.nvim_exec(
 	[[
-set scrolloff=5
+set scrolloff=2
 augroup VCenterCursor
   au!
   au BufRead,WinEnter,WinNew,VimResized *,*.*

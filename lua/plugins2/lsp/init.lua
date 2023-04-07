@@ -7,7 +7,6 @@ vim.api.nvim_set_keymap("n", "gd", "<cmd>Telescope lsp_definitions theme=dropdow
 -- search doc symbols
 vim.api.nvim_set_keymap("n", "<space>v", ":Telescope lsp_document_symbols<cr>", { silent = true })
 -- search workspace symbols
-vim.api.nvim_set_keymap("n", "<space>b", ":Telescope lsp_dynamic_workspace_symbols<cr>", { silent = true })
 vim.api.nvim_set_keymap("n", "<leader>hint", ":lua require('lsp-inlayhints').toggle()<cr>", { silent = true })
 
 return {

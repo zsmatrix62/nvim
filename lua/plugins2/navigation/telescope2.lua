@@ -40,6 +40,8 @@ return {
 			file_ignore_patterns = { "node_modules", ".cargo" },
 		})
 
+		pcall(telescope.load_extension, "bookmarks")
+
 		-- telescope mappings
 		-- vim.api.nvim_set_keymap("n", "<space>2", ":Telescope live_grep<cr>", { silent = true })
 		vim.api.nvim_set_keymap(

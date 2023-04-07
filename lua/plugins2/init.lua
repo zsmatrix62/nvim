@@ -4,7 +4,7 @@ return {
 	require("plugins2.ui"),
 	require("plugins2.tools"),
 	require("plugins2.git"),
-	-- require("plugins2.copilot"),
+	require("plugins2.copilot"),
 	require("plugins2.languages"),
 	require("plugins2.lsp"),
 
