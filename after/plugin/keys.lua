@@ -12,6 +12,7 @@ local mappings = {
 	{ "v", "<A-k>", ":m '<-2<CR>gv-gv" },
 
 	-- use jj to exit insert mode
+	{ "n", "<leader>rr", ":LspRestart<cr>" },
 	{ "i", "jj", "<Esc>" },
 	{ "i", "ji", "<Esc>A;<esc>" },
 	{ "n", "zz", "zt" },

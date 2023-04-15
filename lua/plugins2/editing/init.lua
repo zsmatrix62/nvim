@@ -8,4 +8,5 @@ return {
 	require("plugins2.editing.ts-auto-tag"),
 	require("plugins2.editing.context"),
 	require("plugins2.editing.multi"),
+	require("plugins2.editing.nx"),
 }

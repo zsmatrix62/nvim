@@ -1,16 +1,5 @@
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-local M = {}
-
-M.lsp_formatting = function(bufnr)
-	vim.lsp.buf.format({
-		filter = function(client)
-			return client.name == "null-ls"
-		end,
-		bufnr = bufnr,
-	})
-end
-
 return {
 	{
 		"jose-elias-alvarez/null-ls.nvim",
@@ -37,6 +26,7 @@ return {
 					null_ls.builtins.formatting.taplo,
 					null_ls.builtins.formatting.rustfmt,
 					null_ls.builtins.formatting.swiftformat,
+					-- null_ls.builtins.formatting.eslint,
 					-- null_ls.builtins.formatting.eslint_d,
 					null_ls.builtins.diagnostics.golangci_lint,
 					null_ls.builtins.diagnostics.staticcheck,
@@ -48,21 +38,24 @@ return {
 							group = augroup,
 							buffer = bufnr,
 							callback = function()
-								-- vim.lsp.buf.format({ bufnr = 0 })
-								vim.lsp.buf.format({
-									---@diagnostic disable-next-line: redefined-local
-									filter = function(client)
-										return client.name == "null-ls"
-									end,
-									bufnr = bufnr,
-								})
+								require("custom-functions.format").format(bufnr)
 							end,
 						})
 					end
 				end,
 			})
-			vim.api.nvim_set_keymap("n", "<leader>s", ":lua vim.lsp.buf.format()<cr>", { silent = false })
-			vim.api.nvim_set_keymap("v", "<leader>s", ":lua vim.lsp.buf.format()<cr>", { silent = false })
+			vim.api.nvim_set_keymap(
+				"n",
+				"<leader>s",
+				":lua require('custom-functions.format').format(0)<cr>",
+				{ silent = true }
+			)
+			vim.api.nvim_set_keymap(
+				"v",
+				"<leader>s",
+				":lua require('custom-functions.format').format(0)<cr>",
+				{ silent = false }
+			)
 		end,
 	},
 }

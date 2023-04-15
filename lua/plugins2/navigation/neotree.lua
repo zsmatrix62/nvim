@@ -1,3 +1,18 @@
+local function findFilePath(fn, dir, returnFile)
+	while dir ~= "/" do
+		for file in io.popen('ls -1 "' .. dir .. '"'):lines() do
+			if file == fn then
+				if returnFile == true then
+					return dir .. "/" .. file
+				else
+					return dir
+				end
+			end
+		end
+		dir = vim.fn.fnamemodify(dir, ":h")
+	end
+end
+
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	url = "https://github.com/nvim-neo-tree/neo-tree.nvim.git",
@@ -98,6 +113,7 @@ return {
 			},
 			filesystem = {
 				commands = {
+
 					run_command_in = function(state)
 						local node = state.tree:get_node()
 						local path = node:get_id()
@@ -108,11 +124,73 @@ return {
 							vim.api.nvim_input(":silent! !cd " .. path .. " && ")
 							local events = require("neo-tree.events")
 							vim.schedule(function()
-								print(path)
 								events.fire_event(events.FS_EVENT)
 							end)
 						end
 					end,
+
+					run_nx_angular_command_in = function(state)
+						local node = state.tree:get_node()
+						local path = node:get_id()
+						if node.type == "file" then
+							vim.api.nvim_input(": " .. path .. "<Home>")
+						end
+
+						if node.type == "directory" then
+							local options = {
+								"service",
+								"component",
+								"pipe",
+								"directive",
+								"environments",
+								"interceptor",
+								"resolver",
+								"guard",
+							}
+							vim.ui.select(options, {
+								prompt = "",
+							}, function(selected)
+								if selected ~= nil then
+									local workspacePath = findFilePath("package.json", path, false)
+									-- remove workspacePath from path to get relative path
+									-- to workspacePath
+									local relativePath = string.gsub(path, workspacePath, "")
+
+									local projectJsonPath = findFilePath("project.json", path, true)
+
+									local projectJsonFile = io.open(projectJsonPath, "r")
+									local packageJsonContent = projectJsonFile:read("*all")
+									projectJsonFile:close()
+									local packageJsonData = vim.fn.json_decode(packageJsonContent)
+									local packageName = packageJsonData["name"]
+
+									local cmd = ":!cd "
+										.. path
+										.. " && npx nx g @nrwl/angular:"
+										.. selected
+										.. " --project="
+										.. packageName
+
+									if vim.tbl_contains({ "component", "pipe", "directive" }, selected) then
+										cmd = cmd .. " --standalone=true"
+									elseif vim.tbl_contains({ "guard", "resolver", "interceptor" }) then
+										cmd = cmd .. " --functional=true"
+									end
+
+									cmd = cmd .. " --path=" .. relativePath
+									cmd = cmd .. " --name="
+
+									vim.api.nvim_input(cmd)
+
+									local events = require("neo-tree.events")
+									vim.schedule(function()
+										events.fire_event(events.FS_EVENT)
+									end)
+								end
+							end)
+						end
+					end,
+
 					system_open = function(state)
 						local node = state.tree:get_node()
 						local path = node:get_id()
@@ -134,6 +212,7 @@ return {
 					},
 					hide_by_pattern = { -- uses glob style patterns
 						"*venv",
+						"tsconfig*",
 					},
 					never_show = { -- remains hidden even if visible is toggled to true
 						".DS_Store",
@@ -160,6 +239,7 @@ return {
 						["F"] = "clear_filter",
 						["<leader>o"] = "system_open",
 						["i"] = "run_command_in",
+						["nr"] = "run_nx_angular_command_in",
 					},
 				},
 			},

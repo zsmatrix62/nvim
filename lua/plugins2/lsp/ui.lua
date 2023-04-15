@@ -15,10 +15,19 @@ return {
 		"glepnir/lspsaga.nvim",
 		event = "BufRead",
 		branch = "main",
+		dependencies = {
+			{ "nvim-tree/nvim-web-devicons" },
+			--Please make sure you install markdown and markdown_inline parser
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
 		-- commit = "66bb06771789d677ef2b7c9a0bd57941298f6a9f",
+		-- commit = "3a341e3181ff845ca20e93ce66da967400cba606",
 		-- after = "nvim-treesitter",
 		config = function()
 			require("lspsaga").setup({
+				diagnostic = {
+					show_code_action = true,
+				},
 				ui = {
 					-- currently only round theme
 					theme = "round",

@@ -1,18 +1,27 @@
 return {
 
-	-- use({
-	-- 	"folke/tokyonight.nvim",
-	-- 	config = function()
-	-- 		vim.cmd([[colorscheme tokyonight]])
-	-- 	end,
-	-- })
+	{
+		"folke/tokyonight.nvim",
+		config = function()
+			vim.cmd([[colorscheme tokyonight]])
+		end,
+	},
 
 	{
 		"LunarVim/lunar.nvim",
 		config = function()
 			vim.cmd([[colorscheme lunar]])
 		end,
-	}
+	},
+
+	-- {
+	-- 	"EdenEast/nightfox.nvim",
+	-- 	config = function()
+	-- 		-- vim.cmd([[colorscheme nordfox]])
+	-- 		vim.cmd([[colorscheme duskfox]])
+	-- 		-- vim.cmd([[colorscheme nightfox]])
+	-- 	end,
+	-- },
 
 	-- use({
 	-- 	"catppuccin/nvim",
