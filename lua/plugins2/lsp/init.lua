@@ -12,7 +12,8 @@ vim.api.nvim_set_keymap("n", "<leader>hint", ":lua require('lsp-inlayhints').tog
 return {
 	require("plugins2.lsp.cmp"),
 	require("plugins2.lsp.manson"),
-	require("plugins2.lsp.inlayhints"),
+	-- require("plugins2.lsp.inlayhints"),
 	require("plugins2.lsp.ui"),
+	require("plugins2.lsp.fidget"),
 	require("plugins2.lsp.null"),
 }

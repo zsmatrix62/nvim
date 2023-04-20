@@ -1,7 +1,7 @@
 return {
 	"lvimuser/lsp-inlayhints.nvim",
-	event = "BufRead",
-	enable = false,
+	-- event = "BufRead",
+	enable = true,
 	config = function()
 		local status_ok, inlayhints = pcall(require, "lsp-inlayhints")
 		if not status_ok then
@@ -37,7 +37,7 @@ return {
 				highlight = "Comment",
 			},
 			enabled_at_startup = true,
-			debug_mode = false,
+			debug_mode = true,
 		})
 
 		vim.api.nvim_create_augroup("LspAttach_inlayhints", {})

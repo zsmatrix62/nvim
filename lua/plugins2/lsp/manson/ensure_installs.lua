@@ -29,6 +29,7 @@ return {
 		-- formatters
 		-- "clang-format",
 		"prettier",
+		"nxls",
 		-- "prettierd",
 		"goimports",
 		"gofumpt",

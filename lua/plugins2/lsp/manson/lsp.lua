@@ -2,7 +2,7 @@ local ensure_installs = require("plugins2.lsp.manson.ensure_installs")
 
 return {
 	"williamboman/mason-lspconfig.nvim",
-	event = "BufRead",
+	-- event = "BufRead",
 	priority = 998,
 	config = function()
 		local mansonLspConfig = require("mason-lspconfig")

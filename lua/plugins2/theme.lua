@@ -7,12 +7,12 @@ return {
 		end,
 	},
 
-	{
-		"LunarVim/lunar.nvim",
-		config = function()
-			vim.cmd([[colorscheme lunar]])
-		end,
-	},
+	-- {
+	-- 	"LunarVim/lunar.nvim",
+	-- 	config = function()
+	-- 		vim.cmd([[colorscheme lunar]])
+	-- 	end,
+	-- },
 
 	-- {
 	-- 	"EdenEast/nightfox.nvim",

@@ -8,7 +8,7 @@ return {
 				gofmt = "gofumpt",
 				lsp_gofumpt = true,
 				lsp_inlay_hints = {
-					enable = false,
+					enable = true,
 				},
 			})
 			require("telescope").load_extension("goimpl")

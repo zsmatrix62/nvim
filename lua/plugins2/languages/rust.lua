@@ -5,7 +5,7 @@ return {
 		local opts = {
 			tools = {
 				inlay_hints = {
-					auto = false,
+					auto = true,
 				},
 			},
 			server = {
@@ -36,5 +36,5 @@ return {
 		}
 
 		require("rust-tools").setup(opts)
-	end
+	end,
 }
