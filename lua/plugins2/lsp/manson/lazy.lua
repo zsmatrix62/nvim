@@ -4,7 +4,6 @@ return {
 	{
 		"williamboman/mason.nvim",
 		priority = 999,
-		event = "BufRead",
 		config = function()
 			require("mason").setup({
 				ui = {
@@ -19,7 +18,6 @@ return {
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		event = "BufRead",
 		config = function()
 			require("mason-tool-installer").setup({
 				ensure_installed = require("plugins2.lsp.manson.ensure_installs").tools,

@@ -18,8 +18,9 @@ local mappings = {
 	{ "n", "zz", "zt" },
 
 	-- quick save
-	{ "n", "mm", ":wa<cr>" },
-	{ "n", "<space>s", ":wa<cr>" },
+	{ "n", "mm", ":lua require('custom-functions.format').format(0)<cr>" },
+	{ "n", "<space>s", ":lua require('custom-functions.format').format(0)<cr>" },
+	-- { "n", "<space>s", ":wa<cr>" },
 
 	-- map line start and end
 	{ "n", "H", "^" },

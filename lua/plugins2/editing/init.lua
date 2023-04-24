@@ -9,4 +9,5 @@ return {
 	require("plugins2.editing.context"),
 	require("plugins2.editing.multi"),
 	require("plugins2.editing.nx"),
+	require("plugins2.editing.move"),
 }
