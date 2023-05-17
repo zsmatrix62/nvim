@@ -1,6 +1,7 @@
 return {
 	"lvimuser/lsp-inlayhints.nvim",
 	-- event = "BufRead",
+	branch = "anticonceal",
 	enable = true,
 	config = function()
 		local status_ok, inlayhints = pcall(require, "lsp-inlayhints")

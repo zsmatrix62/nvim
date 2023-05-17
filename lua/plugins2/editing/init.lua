@@ -10,4 +10,5 @@ return {
 	require("plugins2.editing.multi"),
 	require("plugins2.editing.nx"),
 	require("plugins2.editing.move"),
+	require("plugins2.editing.indentline"),
 }

@@ -86,7 +86,7 @@ return {
 			end, { silent = true, noremap = true })
 
 			vim.keymap.set({ "n", "t" }, [[<c-\>]], "<cmd>Lspsaga term_toggle<CR>", { silent = true, noremap = true })
-			vim.keymap.set({ "n" }, [[<space>t]], "<cmd>Lspsaga outline<CR>", { silent = true, noremap = true })
+			-- vim.keymap.set({ "n" }, [[<space>t]], "<cmd>Lspsaga outline<CR>", { silent = true, noremap = true })
 		end,
 	},
 }
