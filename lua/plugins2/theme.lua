@@ -6,6 +6,21 @@ return {
 			vim.cmd([[colorscheme tokyonight]])
 		end,
 	},
+	-- {
+	-- 	"catppuccin/nvim",
+	-- 	name = "catppuccin",
+	--
+	-- 	config = function()
+	-- 		vim.cmd([[colorscheme catppuccin]])
+	-- 	end,
+	-- },
+
+	-- {
+	-- 	"hardhackerlabs/theme-vim",
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("hardhacker")
+	-- 	end,
+	-- },
 
 	-- {
 	-- 	"LunarVim/lunar.nvim",

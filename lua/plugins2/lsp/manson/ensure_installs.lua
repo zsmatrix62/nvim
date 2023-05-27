@@ -15,13 +15,13 @@ return {
 		"svelte",
 		-- "clangd",
 		"cssls",
-		-- "taplo",
+		"taplo",
 		"angularls",
 		"lua_ls",
 		"jsonls",
 		"bufls",
 		"html",
-		-- "tailwindcss",
+		"tailwindcss",
 	},
 	tools = {
 		-- formatters
